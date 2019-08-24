@@ -21,7 +21,8 @@ def main():
         listeners.append(parse(dataset))
     spy = listeners.pop(0)
 
-    distances = sorted()
+    distances = sorted(list(map(lambda x : dist(spy, x), listeners)))
+    print(int(distances[:2][-1]))
 
 if __name__ == "__main__":
     main()
