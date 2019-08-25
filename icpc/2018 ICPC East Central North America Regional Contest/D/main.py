@@ -38,18 +38,22 @@ def processWord(word):
             token = getToken(sub.lower())
             if token:
                 # Sometimes mulitple tokens can appear for the same one, we just select the one that is longest
-                possible.append((token, len(sub)))
+                possible.append((token, len(sub), sub))
+        # A token replacement has been found at this index
         if possible:
+            # Find the best one, based on the sub
             select = max(possible, key=lambda item : item[1])
             # print(index, select, word[index:index + select[1]])
-            word = word[:index] + select[0] + word[index + select[1]:]
+            word = word[:index] + (select[0].title() if select[2].istitle() else select[0]) + word[index + select[1]:]
             # word[index:index + select[1]] = select[0]
         index += 1
     return word
 
+# Process a single line
 def processLine(line):
     return ' '.join([processWord(word) for word in line.split(' ')])
 
+# Drive Code
 def main():
     path = os.path.join(sys.path[0], 'input')
     data = open(path, 'r').read().split('\n')[1:]
