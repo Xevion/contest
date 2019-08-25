@@ -46,7 +46,9 @@ def processWord(word):
             # print(index, select, word[index:index + select[1]])
             word = word[:index] + (select[0].title() if select[2].istitle() else select[0]) + word[index + select[1]:]
             # word[index:index + select[1]] = select[0]
-        index += 1
+            index += len(select[0])
+        else:
+            index += 1
     return word
 
 # Process a single line
