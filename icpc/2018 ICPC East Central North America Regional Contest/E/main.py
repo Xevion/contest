@@ -15,7 +15,7 @@ def main():
     # Parse inputs
     inputs = [list(map(float, open(path).read().split())) for path in inputs]
     # Process inputs and print outputs
-    print('\n'.join(map(lambda item : process(*item), inputs)))
+    print('\n{}\n'.format('-' * 10).join(map(lambda item : process(*item), inputs)))
 
 if __name__ == "__main__":
     main()
