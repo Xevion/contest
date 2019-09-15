@@ -114,8 +114,87 @@ r = [0, 38, 12, 19, 19]
 ```
 
 ## Question 11
+
+`Math.ceil` on a number already at it's ceiling/floor does nothing.
+
+```java
+2.15 -> 2.0 -> 2.0
+```
+
 ## Question 12
+
+This one has a incredibly interesting output, and I believe the answer is incorrect, or something has changed to make this incorrect over time.
+
+Let's split it up into sections to make the problem simpler.
+
+### Regex
+
+`\\.*+` may seem abstract and strange at first, but it's really just an amalgamation of escape sequences and the PCRE Regex Engine (Javascript based Regex engines are more common, PCRE is server side and thus is not commonly seen with it's set of PCRE specific features).
+
+`\\` is simply a escape sequence for the backslash in **Java**. This will catch most as you might move to the mindset that we're working in Regex, but we're in fact sending a String to a regex engine before it gets processes, and thus we must escape for **Java** before Regex.
+
+`\\.` leads to a escape sequence for a dot `.` in Regex. Note: this is not the metacharacter, this is the escaped period/dot.
+
+`\\.*` matches 0 or more escaped periods.
+
+`\\.*+` adds a reluctant quantifier, specific to the PCRE Regex Engine. This caught me, as I had never seen the reluctant quantifier like this before.
+
+If you want a tutorial on how reluctant vs other quantifiers, see [this Stack Overflow answer](https://stackoverflow.com/a/5319978/6912830), it's perfect and is very easy to understand.
+
+So what does this in total match? *Zero or more periods*, of course.
+
+### Solving the split
+
+`a...b..c.d.efg...h` is our string. Let's see how our regex, `zero or more periods`, actually works in practice.
+
+First, the `a` is seen and nothing is found, but it matches the idea of `zero or more periods`, so it progresses on to the second character, the `.`. Between this and the next sequence, a split is added, so the current array looks like this: `["a",]`...
+
+Here, it begins matching the 2nd to 4th characters, a line of 3 dots. All 3 are deleted and replaced with a empty string to designate a split. Our array looks like `["a", "",]` now.
+
+The basic idea of how this regex ends up working and how it would react almost always should take form now. You could come up with a rule to work off of so that the rest of the array is easier, split by every character, but add a empty space where dots are.
+
+Be careful and make sure that
+
+The rest of the array ends up being `[a, , b, , c, , d, , e, f, g, , h]`.
+
 ## Question 13
+
+This question is dependent on `pre-increment` and `post-increment` operator knowledge.
+
+### Unary Increment and Decrement Operators
+
+What I'm talking about is the `unary operators`, `++` and `--`.
+
+"Post" vs "Pre" is shown by the position of the operator before or after the variable it's modifying.
+
+Pre-increment `++x` 
+
+Post-increment `y--`
+
+Post-decrement `--this.halogen.id` 
+
+Pre-increment `dragon.level++`
+
+### Evaluation
+
+   Let's evaluate the equation we're presented with.
+
+   ```java
+   int x = 3;
+   int y = 4;
+   println(++x + ++y + y++)
+   ```
+
+   The evaluating engine (or whatever) sees a 4 with the pre-increment operator, x is incremented to 4, and returns a 4. Then, y is incremented to 5, and the operator returns a 5.
+
+   So far, we've got `4 + 5 + y++`.
+
+   Finally, y is returned as it is currently (5) and then incremented.
+
+   The final equation looks like `4 + 5 + 5 = 14`.
+
+   `x = 4 and y = 6` in the end, however.
+
 ## Question 14
 ## Question 15
 ## Question 16
