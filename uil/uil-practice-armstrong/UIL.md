@@ -213,8 +213,46 @@ This causes a second compiler error, so, one could rule 3 lines here could cause
 
 ## Question 15
 
+This question is to test your knowledge on ArrayLists and how they work.
+
+Do notice here that the name actually almost looks like it's `1st` and not `lst`. The font is slightly ambiguous in meaning, one could say.
+
+Let's see how the ArrayList is slowly changed over time.
+
+```java
+List<String> lst = new ArrayList<>();
+> List<String>([])
+lst.add("Bob");
+=> List<String>(["Bob"])
+lst.add(1, "Ralph");
+=> List<String>(["Bob", "Ralph"])
+lst.add(0, "Sue");
+=> List<String>(["Sue", "Bob", "Ralph"])
+lst.set(1, "Debbie");
+=> List<String>(["Sue", "Debbie", "Ralph"])
+out.println(lst.get(lst.size()-1));
+%> out.println(lst.get(3 - 1))
+%> out.println(lst.get(2))
+=> "Ralph" 
+```
+
+`ArrayList.add(type value)` appends the value specified to the end of the array.
+
+`ArrayList.add(int index, type value)` inserts the value specified at the position in front of the specified index. It moves the specified index forward and puts the value before it.
+
+`ArrayList.set(int index, type value)` sets the value at the index specified to the value specified.
 
 ## Question 16
+
+This question concerns the left shift operator, which is very easy to understand, but hard to evaluate on paper.
+
+The value given is `1234`, and we shift it left `6` times.
+
+The binary representation of `1234` is `10011010010`, so, to left shift it, we simply add 6 zeroes to the end. Now, we just convert it from it's new binary representation, `10011010010000000`, to base 10.
+
+It's final base 10 repsentation is 78976.
+
+
 ## Question 17
 
 First parameter is the number, second is the base.
