@@ -4,7 +4,7 @@
 
 This can be guessed on pretty easily by analyzing the magnitudes of the powers. Every number here is within a mildly close range of eachother, and the highest numbers have some of the *lowest* powers, so we can assume that the one with the highest power will be the largest when evaluated.
 
-# Question 2
+## Question 2
 
 This is simple String and Integer addition.
 
@@ -88,13 +88,31 @@ It's pretty easy modulus, I got `ABE`.
 
 ## Question 9
 
-Just a little
+Solve from left to right, (P)(E)(MD)(AS).
+
+Tip: You can solve in sections with the parentheses above, as multiplication/division can be done in any order together without changing the result. It helps a little bit with cutting down the manual solving time, if you ask me.
 
 ```java
-
+3 + 5 / 2 + 2.0
+3 + 2 + 2.0
+5 + 2.0
+7.0
 ```
 
 ## Question 10
+
+Just a little bit of math and tracking of a changing array.
+
+```java
+r[3] = 19;
+r[1] = r[3] * 2 = 38;
+r[4] = r[1] / 2 = 19;
+r[2] = r[4 % 3 = 1] / 3 = 38 / 3 = 12; 
+```
+```java
+r = [0, 38, 12, 19, 19]
+```
+
 ## Question 11
 ## Question 12
 ## Question 13
