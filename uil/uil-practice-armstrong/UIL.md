@@ -21,7 +21,7 @@ Super simple math.
 
 This one deals with integer division.
 
-```
+```java
 27 / 2 = 13
 13 / 2 = 6
 6 / 2 = 3
@@ -42,7 +42,7 @@ The for loop operates on every index in the String up the center, which ends up 
 
 For each index in the String being operated upon, the String `t` has the index being accessed and the last index in the String `s` added (always `e`).
 
-```
+```java
 0 => He
 1 => oe
 2 => we
@@ -68,7 +68,7 @@ The final array looks like `[0, 0, 4, 0, 0]`
 
 This is just pretty awful parantheses aside from the initial solving.
 
-```
+```java
 !(!(!(...)))
    !true || !false && !false
    false || true && true
@@ -77,11 +77,23 @@ This is just pretty awful parantheses aside from the initial solving.
 !(!(!(true)))
 !(!(false))
 !(true)
-
+false
 ```
 
 ## Question 8
+
+This one actually tricked me because I'm really dumb and can't read; they are `if`s and `else if`s to look for here.
+
+It's pretty easy modulus, I got `ABE`.
+
 ## Question 9
+
+Just a little
+
+```java
+
+```
+
 ## Question 10
 ## Question 11
 ## Question 12
@@ -95,7 +107,7 @@ First parameter is the number, second is the base.
 
 Remember for 123<sub>4</sub>, the maximum values for each digit in order from left-to-right (ending on the right), with the number it's used to build (right * 4 = left) would be...
 
-```
+```java
 n(n/4) - 256(64) - 64(16) - 16(4) - 4(1).
 ```
 
@@ -161,7 +173,7 @@ Otherwise, it will recursively return `fOne(fTwo(s, s.lastIndexOf("#")))`, as me
 
 Let's diagnose the output for real and see what is really going on.
 
-```
+```java
 1 => H#i#t#h#i#s#i#s#f#u#n
 2 => H#i#t#h#i#s#i#s#f#un
 3 => Hi#t#h#i#s#i#s#f#un
@@ -220,7 +232,7 @@ To start understanding the pattern, we should break it apart.
 
 `@` matches a single `@` character. We should take a moment to note that the sections before and this match these these kinds of emails:
 
-```
+```java
 jgu6oaouih23_6@
 d9hi@
 i_3@
@@ -229,7 +241,7 @@ f@
 
 but not these
 
-```
+```java
 @
 ^35a@
    @
