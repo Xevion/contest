@@ -1,5 +1,7 @@
 # UIL Eligibility Packet
 
+Question 1-26 are done in full. From then on, only harder problems will be explained at much lighter levels to save time while completing this packet.
+
 ## Question 1
 
 This can be guessed on pretty easily by analyzing the magnitudes of the powers. Every number here is within a mildly close range of eachother, and the highest numbers have some of the *lowest* powers, so we can assume that the one with the highest power will be the largest when evaluated.
@@ -193,7 +195,7 @@ Pre-increment `dragon.level++`
 
    The final equation looks like `4 + 5 + 5 = 14`.
 
-   `x = 4 and y = 6` in the end, however.
+   `x = 4 and y = 6` in the end.
 
 ## Question 14
 
@@ -437,10 +439,10 @@ Matches!
 
 ## Question 26
 
-This is a rather long problem, so let's split it up into the patrs.
+This is a rather long problem, so let's split it up into parts.
 
 ### Class X
 
 Class X is a implementation of the Comparable Interface, and is essentially a method for comparing Strings when sorted. Focus on the `compareTo` method.
 
-The `compareTo` method
+The `compareTo` method is how comparables "compare", and it returns a integer value to representation how it should be placed in the array. The array is sorted in descending order when `Collections.sort` is called on it.
