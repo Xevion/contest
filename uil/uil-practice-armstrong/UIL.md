@@ -405,7 +405,35 @@ but not these
 
 `[a-z]{2, 3}$` matches a sequence of lowercase letters with a length of 2 or 3. The `$` denotes the ending anchor as specified earlier.
 
-So in summary, the regex pattern matches a sequence of word characters, a `@` symbol, another sequence of word characters, a period, and then 2-3 lowercase letters. This is quite obviously a generate specification for an email (which allows underscores). The 2-3 lowercase letters only allows two or three letter domain extensions (`.com`, `.gov`, `.me` but not `.photography`, `.online`)
+So in summary, the regex pattern matches a sequence of word characters, a `@` symbol, another sequence of word characters, a period, and then 2-3 lowercase letters. This is quite obviously a generate specification for an email (which allows underscores). The 2-3 lowercase letters only allows two or three letter domain extensions (`.com`, `.gov`, `.me` but not `.photography`, `.online`) This also does not allow second-level, or any multi-level domains such as `.co.uk`.
+
+---
+
+To solve the problem, let's just see which which matches.
+
+```java
+>>> bob@example.com
+Matches!
+```
+```java
+>>> bob@example.co.uk
+Does not match!
+".co.uk" does not match "\.[a-z]{2, 3}" which allows only 1 period.
+```
+```java  
+>>> ralph@coding.guru
+Does not match!
+Domain extensions may only be 2-3 characters long: "\.[a-z]{2, 3}".
+```
+```java
+>>> sue.smith@company.com
+Does not match!
+"sue.smith" does not match "\w{1,}", no periods are allowed in the username.
+```
+```java
+>>> donaldgoose@dizney.com
+Matches!
+```
 
 ## Question 26
 
