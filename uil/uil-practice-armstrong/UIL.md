@@ -196,7 +196,24 @@ Pre-increment `dragon.level++`
    `x = 4 and y = 6` in the end, however.
 
 ## Question 14
+
+This question is based on how you can instantiate different data types.
+
+You should remember that the `char` data type is really a integer that maps to a specific character, and thus, you can use a integer to instantiate it. The first line passes.
+
+The second line is a short. Shorts are essentially integers, but 16 bit, and thus their maximum value is smaller by a very large portion. Their set notation is `[-32,768, 32,768]` inclusive.
+
+The answer from here on out would be `line two`, but let's look at the rest, too.
+
+The third line is a integer, which has a much larger range, and `33,000` comes no where near it's maximum. This line is okay.
+
+The fourth line is alright, casting a integer to a float is totally okay, but there is a big caveat: the variable name being used to instantiate has *already been used in the previous line*.
+
+This causes a second compiler error, so, one could rule 3 lines here could cause the problem, requiring at least two lines to be changed or removed to cease errors from occurring.
+
 ## Question 15
+
+
 ## Question 16
 ## Question 17
 
