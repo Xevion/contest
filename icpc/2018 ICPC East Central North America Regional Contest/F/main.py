@@ -4,25 +4,41 @@ def process(item):
     # Constants and initial values
     stocks, (n, m) = item[1], item[0]
     peaks, valleys = [], []
-    possiblePeaks, possibleValleys = range(n, len(stocks) - n), range(m, len(stocks) - m) 
     # Check all possible peaks
-    for index in possiblePeaks:
-        isPeak = True
+    for index in range(len(stocks)):
+        isPeak, isValley = True, True
+        # Peak Checking
         for i in range(1, n + 1):
-            if not stocks[index - i] < stocks[index] or not stocks[index] > stocks[index + i]:
-                isPeak = False
-        if isPeak:
-            peaks.append(index)
-    print(peaks)
-    # Check all possible valleys
-    for index in possibleValleys:
-        isValley = True
+            # If we're no the first index
+            if index - i >= 0:
+                # If position behind us is lower
+                if not stocks[index] > stocks[index - i]:
+                    isPeak = False
+                    break
+            # If we're not the final index
+            if index + i < len(stocks):
+                # and position in front of us is lower
+                if not stocks[index] > stocks[index + i]:
+                    isPeak = False
+                    break
+        # Valley checking
         for i in range(1, m + 1):
-            if not stocks[index - i] > stocks[index] or not stocks[index] < stocks[index + i]:
-                isValley = False
-        if isValley:
-            valleys.append(index)
-    print(valleys)
+            # If we're not  the first index
+            if index - i >= 0:
+                # if position behind us is higher
+                if not stocks[index] < stocks[index - i]:
+                    isValley = False
+                    break
+            # If we're not the final index
+            if index + i < len(stocks):
+                # and position in front of us is higher
+                if not stocks[index] < stocks[index + i]: 
+                    isValley = False
+                    break
+        if isPeak: peaks.append(index)
+        if isValley: valleys.append(index)
+    print(f'n{n}, m{m}')
+    print('{0}{1}\n{0}{2}'.format('-> ', peaks, valleys))
     return len(peaks), len(valleys)
 
 # Driver code for all inputs in folder

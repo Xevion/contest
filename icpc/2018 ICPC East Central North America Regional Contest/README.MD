@@ -8,6 +8,14 @@ Most of these problems seem modestly easy, if I'm being honest.
 
 ## Progress
 
-#1 : Unsovled
+#A : **Solved**
 
-#2 : **Solved**
+#B : **Solved**
+
+#C : Unsolved
+
+#D : **Solved**
+
+#E : **Solved**
+
+#F : **Solved**
