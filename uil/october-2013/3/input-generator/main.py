@@ -7,11 +7,15 @@ class Node(object):
         self.g, self.h, self.f = 0, 0, 0
 
     def __eq__(self, other):
-        assert type(other) == Node, "Can only compare equality against other Node objects"
+        assert type(other) == Node, "Node cannot compared against type \"{}\"".format(str(type(other)))
         return self.position == other.position
 
     def __repr__(self):
         return f'<Node ({self.position[0]}, {self.position[1]})>'
+    
+    @classmethod
+    def positionify(self, nodes):
+        return [node.position for node in nodes]
 
 # Generate a grid and return it to the user
 class SnakeGrid(object):
@@ -81,6 +85,7 @@ class SnakeGrid(object):
     def bestPellet(self, curpos, blacklist=[]):
         potential = self.pellets()
         if blacklist:
+            print(curpos, blacklist)
             potential = list(filter(lambda item : item not in blacklist, potential))
             # Returns None if no potential pellets are in due to blacklist
             if not potential:
@@ -91,15 +96,22 @@ class SnakeGrid(object):
     def merge(self, pos1, pos2):
         return [pos1[0] + pos2[0], pos1[1] + pos2[1]]
 
+    def solution(self, maxdist=20):
+        path = self.generateSolutions()
+        for i, pos in enumerate(path):
+            if self.available(pos):
+                self.mark(pos, str(i + 1))
+        return path
+
     # Generater a solution for the maz
-    def solution(self, length=20):
+    def generateSolutions(self, maxdist=30):
         def build_path(current_node):
             path = []
             current = current_node
             while current is not None:
                 path.append(current.position)
                 current = current.parent
-            return str(path[::-1])
+            return path[::-1]
 
         # Pathfinding initial constants
         start_node = Node(None, self.positions[-1])
@@ -110,7 +122,7 @@ class SnakeGrid(object):
         output = ""
 
         while len(open_list) > 0:
-            self.sleep(0.125)
+            # self.sleep(0.125)
             pathdist += 1
             # Choose the best node to work on
             current_index, current_node = min(enumerate(open_list), key=lambda item : item[1].f)
@@ -119,17 +131,22 @@ class SnakeGrid(object):
 
 
             # Check if we've hit the maximum distance
-            if pathdist >= length:
+            if pathdist >= maxdist:
                 return build_path(current_node)
 
             # If we've hit the "end node", but still distance to travel, setup a new one
             if current_node == end_node: 
                 finished_end_nodes.append(end_node)
-                end_node = self.bestPellet(blacklist=finished_end_nodes)
+                start_node = end_node
+                open_list = [start_node]
+                closed_list.append(end_node)
+                end_node = position=self.bestPellet(current_node.position, blacklist=Node.positionify(finished_end_nodes))
                 # if we've acquired all pellets by chance
                 if end_node is None:
                     return build_path(current_node)
-            
+                else:
+                    end_node = Node(parent=None, position=end_node)
+
             # Basically iterates upon all positions next to the current node dependent on the cardinal directions
             for offset in self.offsets:
                 child = self.merge(current_node.position, offset)
@@ -137,20 +154,18 @@ class SnakeGrid(object):
                 if self.inBounds(child):
                     child = Node(parent=current_node, position=child)
                     
+                    if child in closed_list:
+                        continue
+
                     # Ensure not already a closed position
-                    if not child in closed_list:
-                        child.g = current_node.g + 1
-                        child.h = self.distance(child.position, end_node.position)
-                        child.f = child.g + child.h
+                    child.g = current_node.g + 1
+                    child.h = self.distance(child.position, end_node.position)
+                    child.f = child.g + child.h
                     
                     # Ensure that child node is
-                    for open_node in open_list:
-                        if child == open_node:
-                            if child.g > open_node.g:
-                                continue
-                    
-                    open_list.append(child)
-
+                    if child not in open_list:
+                        open_list.append(child)
+    
         return output
 
     # Quick method for getting a position with the offsets provided
@@ -170,7 +185,8 @@ class SnakeGrid(object):
         return (self.matrix[pos[0]][pos[1]] == look) if self.inBounds(pos) else False
 
     def __repr__(self):
-        return '\n'.join(' - '.join(_) for _ in self.matrix)
+        length = max([max(len(item) for item in sub) for sub in self.matrix])
+        return '\n'.join(' - '.join(map(lambda item : item.ljust(length) if item != ' ' else (' ' * length), line)) for line in self.matrix)
 
 # Driver Code
 if __name__ == "__main__":
@@ -190,10 +206,11 @@ if __name__ == "__main__":
     # Build and prints matrixes
     for x in range(iterations):
         snakegrid = SnakeGrid(size[0], size[1], 3)
+        solution = snakegrid.solution()
         print(dividerCustom.format(str(x+1).zfill(len(str(iterations)))))
         print(snakegrid)
         print(dividerTotal)
-        print(snakegrid.solution())
+        print(solution)
         time.sleep(timing)
     print(dividerTotal)
 

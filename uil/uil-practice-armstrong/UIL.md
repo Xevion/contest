@@ -446,3 +446,5 @@ This is a rather long problem, so let's split it up into parts.
 Class X is a implementation of the Comparable Interface, and is essentially a method for comparing Strings when sorted. Focus on the `compareTo` method.
 
 The `compareTo` method is how comparables "compare", and it returns a integer value to representation how it should be placed in the array. The array is sorted in descending order when `Collections.sort` is called on it.
+
+The integer it returns is calculated based on the length first: if the two Strings have the same length, it returns the result of the two strings `compareTo` method, but if they're not the same length, it returns the difference in length of the two Strings.

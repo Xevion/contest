@@ -1,5 +1,6 @@
 import static java.lang.System.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
  import java.util.List;
 
@@ -16,6 +17,20 @@ class X implements Comparable<X> {
     public String toString() {
         return this.str;
     }
+    public int[] getValues() {
+        int[] values = new int[this.str.length()];
+        for(int i = 0; i < this.str.length(); i++) {
+            values[i] = (int) this.str.charAt(i);
+        }
+        return values;
+    }
+    public int getSum() {
+        int sum = 0;
+        for(int val : this.getValues()) {
+            sum += val;
+        }
+        return sum;
+    }
 }
 
 class question26 {
@@ -26,5 +41,6 @@ class question26 {
             w.add(new X(sub));
         Collections.sort(w);
         out.println(w);
+        out.println(Arrays.toString(new X("Hello").getValues()));
     }
 }
