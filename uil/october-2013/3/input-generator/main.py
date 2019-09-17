@@ -1,4 +1,4 @@
-import math, time, random
+import os, sys, math, time, random
 
 class Node(object):
     def __init__(self, parent=None, position=None):
@@ -198,6 +198,9 @@ class SnakeGrid(object):
     def available(self, pos, look=' '):
         return (self.matrix[pos[0]][pos[1]] == look) if self.inBounds(pos) else False
 
+    def toRawString(self):
+        return '\n'.join(''.join(line) for line in self.matrix)
+
     def __repr__(self):
         length = max([max(len(item) for item in sub) for sub in self.matrix])
         return '\n'.join(' - '.join(map(lambda item : item.ljust(length) if item != ' ' else (' ' * length), line)) for line in self.matrix)
@@ -215,23 +218,27 @@ if __name__ == "__main__":
     dividerTotal = (4 * size[0]) - centerSize
     dividerCustom = ('-' * (dividerTotal // 2)) + ' {} ' + ('-' * (dividerTotal // 2))
     dividerTotal = '-' * (dividerTotal + 4)
+    path = os.path.join(sys.path[0], 'output', 'output.dat')
+    file = open(path, 'w+')
     t1 = time.time()
 
     # Build and prints matrixes
     for x in range(iterations):
         snakegrid = SnakeGrid(size[0], size[1], 3)
-        
         print(dividerCustom.format(str(x+1).zfill(len(str(iterations)))))
+        file.write(snakegrid.toRawString() + '\n')
         for position in snakegrid.pellets():
             pelletCount, solution = snakegrid.solution(startpos=position)
-            print(f'{solution} - {pelletCount}')
+            if len(solution) >= 5 and pelletCount > 0:
+                file.write(solution + '\n')
+                print(f'{solution} - {pelletCount}')
         print(dividerTotal)
         print(snakegrid)
-
         # snakegrid.sleep(timing)
     print(dividerTotal)
 
     # Finish and print timing statistics
+    file.close()
     t2 = time.time()
     print(f'Processing Time : {roundTime(t2 - t1 - snakegrid.sleepTime)}')
     print(f'Artificial Time : {roundTime(snakegrid.sleepTime)}')
