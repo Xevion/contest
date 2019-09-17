@@ -3,7 +3,6 @@ import math, time, random
 class Node(object):
     def __init__(self, parent=None, position=None):
         self.parent, self.position = parent, position
-        
         self.g, self.h, self.f = 0, 0, 0
 
     def __eq__(self, other):
@@ -21,7 +20,9 @@ class Node(object):
 class SnakeGrid(object):
     def __init__(self, x, y, length=3):
         self.x, self.y, self.length, self.sleepTime = x, y, length, 0.0
+        # Right, Down, Up, Left
         self.offsets = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+        self.offsetLetters = list("RDUL")
         self.generate()
     
     def sleep(self, seconds):
@@ -85,7 +86,6 @@ class SnakeGrid(object):
     def bestPellet(self, curpos, blacklist=[]):
         potential = self.pellets()
         if blacklist:
-            print(curpos, blacklist)
             potential = list(filter(lambda item : item not in blacklist, potential))
             # Returns None if no potential pellets are in due to blacklist
             if not potential:
@@ -96,29 +96,42 @@ class SnakeGrid(object):
     def merge(self, pos1, pos2):
         return [pos1[0] + pos2[0], pos1[1] + pos2[1]]
 
-    def solution(self, maxdist=20):
-        path = self.generateSolutions()
+    def solution(self, maxdist=20, startpos=None):
+        pelletCount, path = self.generateSolutions(maxdist=maxdist, startpos=startpos)
         for i, pos in enumerate(path):
             if self.available(pos):
-                self.mark(pos, str(i + 1))
-        return path
+                self.mark(pos, str(i))
+        return pelletCount, self.mapPositions(path)
+
+    def mapPositions(self, positions):
+        letters = []
+        curpos = positions.pop(0)
+        while len(positions) > 0:
+            nextpos = positions.pop(0)
+            offset = [nextpos[0] - curpos[0], nextpos[1] - curpos[1]]
+            letters.append(offset)
+            curpos = nextpos
+        letters = list(map(lambda item : self.offsetLetters[self.offsets.index(item)], letters))
+        return ''.join(letters)
 
     # Generater a solution for the maz
-    def generateSolutions(self, maxdist=30):
+    def generateSolutions(self, maxdist=20, startpos=None):
         def build_path(current_node):
             path = []
             current = current_node
             while current is not None:
                 path.append(current.position)
                 current = current.parent
-            return path[::-1]
+            return (pelletCount, path[::-1])
 
         # Pathfinding initial constants
         start_node = Node(None, self.positions[-1])
-        end_node = Node(None, self.bestPellet(start_node.position))
-        open_list, closed_list = [start_node], []
+        end_node = Node(None, startpos or self.bestPellet(start_node.position))
+        open_list = [start_node]
+        closed_list = [Node(position=pos) for pos in self.pellets(char='X')]
         finished_end_nodes = []
         pathdist = 0
+        pelletCount = 1
         output = ""
 
         while len(open_list) > 0:
@@ -141,6 +154,7 @@ class SnakeGrid(object):
                 open_list = [start_node]
                 closed_list.append(end_node)
                 end_node = position=self.bestPellet(current_node.position, blacklist=Node.positionify(finished_end_nodes))
+                pelletCount += 1
                 # if we've acquired all pellets by chance
                 if end_node is None:
                     return build_path(current_node)
@@ -165,8 +179,6 @@ class SnakeGrid(object):
                     # Ensure that child node is
                     if child not in open_list:
                         open_list.append(child)
-    
-        return output
 
     # Quick method for getting a position with the offsets provided
     def getPos(self, xoffset=0, yoffset=0):
@@ -174,6 +186,8 @@ class SnakeGrid(object):
 
     # Quick method for marking a postiion
     def mark(self, pos, marker='X'):
+        if self.matrix[pos[0]][pos[1]] != ' ':
+            print(f'Overwritten {self.matrix[pos[0][pos[1]]]} with \'{marker}\'')
         self.matrix[pos[0]][pos[1]] = marker
 
     # Mechansim for determining whether a position is in the boundaries of the matrix
@@ -206,17 +220,20 @@ if __name__ == "__main__":
     # Build and prints matrixes
     for x in range(iterations):
         snakegrid = SnakeGrid(size[0], size[1], 3)
-        solution = snakegrid.solution()
+        
         print(dividerCustom.format(str(x+1).zfill(len(str(iterations)))))
-        print(snakegrid)
+        for position in snakegrid.pellets():
+            pelletCount, solution = snakegrid.solution(startpos=position)
+            print(f'{solution} - {pelletCount}')
         print(dividerTotal)
-        print(solution)
-        time.sleep(timing)
+        print(snakegrid)
+
+        # snakegrid.sleep(timing)
     print(dividerTotal)
 
     # Finish and print timing statistics
     t2 = time.time()
-    print(f'Processing Time : {roundTime(t2 - t1 - (timing * iterations) - snakegrid.sleepTime)}')
-    print(f'Artificial Time : {roundTime((timing * iterations) + snakegrid.sleepTime)}')
+    print(f'Processing Time : {roundTime(t2 - t1 - snakegrid.sleepTime)}')
+    print(f'Artificial Time : {roundTime(snakegrid.sleepTime)}')
     print(f'Total Time : {roundTime(t2 - t1)}')
     print(dividerTotal)
