@@ -1,34 +1,55 @@
 import static java.lang.System.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Set;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.HashSet;
+import java.util.*;
 
+// Point representing and (X, Y) coordinate
 class Point {
     int x, y;
+
     Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    void merge(Point other) {
-        this.x += other.x;
-        this.y += other.y;
+
+    // Returns a point which is the translated end-point based on the other point (offset).
+    Point merge(Point other) {
+        return new Point(this.x + other.x, this.y + other.y);
     }
+
     public String toString() {
         return String.format("Point(%d, %d)", this.x, this.y);
+    }
+
+    public boolean equals(Point other) {
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public static boolean collectionContains(Collection<Point> collection, Point point) {
+        for(Point other : collection) {
+            if(point.x == other.x && point.y == other.y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Class method that searches a List
+    public static int listContains(List<Point> c, Point p) {
+        for(Point o : c) {
+            if(p.x == o.x && p.y == o.y)
+                return c.indexOf(o);
+        }
+        return -1;
     }
 }
 
 class Maze {
     // Offset Constants
-    List<Point> positionOffsets = Arrays.asList(new Point(0, 1), new Point(1, 0), new Point(0, -1), new Point(-1, 0));
-    List<String> nameOffsets = Arrays.asList("U R D L".split(" "));
+    public List<Point> positionOffsets = Arrays.asList(new Point(1, 0), new Point(0, 1), new Point(-1, 0), new Point(0, -1));
+    private List<String> nameOffsets = Arrays.asList("D R U L".split(" "));
     // Maze Data
-    private List<Point> snake = new ArrayList<Point>();;
+    List<Point> snake = new ArrayList<Point>();;
     private List<Point> pellets = new ArrayList<Point>();
     private char[][] rawMatrix;
 
@@ -38,14 +59,18 @@ class Maze {
         for(int x = 0; x < 15; x++) {
             for(int y = 0; y < 15; y++) {
                 switch(rawMatrix[x][y]) {
+                    // Empty Space
                     case ' ':
                         break;
+                    // Point Found
                     case 'X':
                         this.snake.add(new Point(x, y));
                         break;
+                    // Pellet Found
                     case 'F':
                         this.pellets.add(new Point(x, y));
                         break;
+                    // Should not be found based on input data. Something has gone wrong/input data is invalid.
                     default:
                         out.println("Possibly faulty Maze Input with item \"" + rawMatrix[x][y] + "\" found.");
                         break;
@@ -56,27 +81,33 @@ class Maze {
 
     // Simulate the snake game using instructions
     String simulate(String input) {
-        char curDirection = 'R';
+        String curDirection = "R";
         int score = 0;
         for(int i = 0; i < input.length(); i++) {
             // Calculate the offset based on the current instruction
             Point offset;
-            char curOffset = input.charAt(i);
-            if(curOffset == 'O')
+            String curOffset = input.substring(i, i + 1);
+            if(!curDirection.equals(curOffset) && !curOffset.equals("O"))
+                curDirection = curOffset;
+            if(curOffset.equals("O"))
                 offset = positionOffsets.get(nameOffsets.indexOf(curDirection));
             else
-                offset = positionOffsets.get(nameOffsets.indexOf(input.substring(i, i+1)));
-            out.println(offset);
+                offset = positionOffsets.get(nameOffsets.indexOf(curOffset));
             // Calculate the new point, ensure it's real
-            Point newPoint = snake.get(snake.size() -1);
-            newPoint.merge(offset);
+            Point newPoint = snake.get(snake.size() - 1);
+            newPoint = newPoint.merge(offset);
+            // New Point was out of bounds, cannot continue
             if(!this.inBounds(newPoint))
-                return "GAME OVER @ " + newPoint;
+                return "GAME OVER";
             // Add new point, discard end of snake to simulate it's movement
-            snake.add(newPoint);
             snake.remove(0);
-            // Check if we're at a pellet
-            score += pellets.contains(newPoint) ? 1 : 0;
+            snake.add(newPoint);
+            // Check if we're at a pellet, add score.
+            int pelletIndex = Point.listContains(pellets, newPoint);
+            if(pelletIndex != -1) {
+                score += 1;
+                this.pellets.remove(pelletIndex);
+            }
         }
         return Integer.toString(score);
     }
@@ -91,7 +122,9 @@ class Maze {
         for(int x = 0; x < 15; x++) {
             String[] temp = new String[15];
             for(int y = 0; y < 15; y++) {
-                temp[y] = Character.toString(rawMatrix[x][y]);
+                Point point = new Point(x, y);
+                // Priority: Empty Space < Pellet < Snake
+                temp[y] = Point.collectionContains(this.snake, point) ? "X" : (Point.collectionContains(this.pellets, point) ? "F" : " ");
             }
             lines[x] = String.join(" - ", temp);
         }
@@ -113,8 +146,7 @@ public class problem3 {
                 rawMatrix[x][y] = line.charAt(y);
             }
         }
-        Maze originalMaze = new Maze(rawMatrix);
-        
+
         // Read each of the inputs
         int lines = Integer.parseInt(read.nextLine());
         String[] inputs = new String[lines];
@@ -123,10 +155,10 @@ public class problem3 {
 
         // Simulate inputs
         for(String input : inputs) {
-            Maze temp = originalMaze;
-            out.println(temp.simulate(input));
-            out.println(temp);
-        }
+            Maze maze = new Maze(rawMatrix);
+            String pellets = maze.simulate(input);
+            // Uncomment to display the final position of the maze
+//            out.println(maze);
+            out.println(pellets);        }
     }
-
 }
