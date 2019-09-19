@@ -2,6 +2,8 @@ import static java.lang.System.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Point {
@@ -11,19 +13,30 @@ class Point {
         this.x = x;
         this.y = y;
     }
+
+    void merge(Point other) {
+        this.x += other.x;
+        this.y += other.y;
+    }
+
+    void merge(int x, int y) {
+        this.x += x;
+        this.y += y;
+    }
 }
 
 class CheckerBoard {
-    Point[] offsets = {Point(1, 1), Point(-1, -1), Point(-1, 1), Point(1, -1)};
+    List<Point> offsets = Arrays.asList(new Point[]{Point(1, 1), Point(-1, -1), Point(-1, 1), Point(1, -1)});
 
     CheckerBoard(String[][] matrix) {
         
     }
 
-    int[][] getPossible(int x, int y) {
-        return getPossible(x, y, new int[0][0]);
+    List<Point> getPossible(int x, int y) {
+        return getPossible(x, y, new ArrayList<Point>());
     }
-    int[][] getPossible(int x, int y, List<Point> blacklist) {}
+
+    List<Point> getPossible(int x, int y, List<Point> blacklist) {}
 }
 
 class problem12 {
