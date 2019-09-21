@@ -53,7 +53,7 @@ class Point {
 
     // equals() method for testing equality of two Point() objects
     // positional untyped equality test, see fullEquals()
-    boolean equals(Point other) {
+    private boolean equals(Point other) {
         return this.x == other.x && this.y == other.y;
     }
 
@@ -94,9 +94,7 @@ class Point {
 // Represents a checkers checkerboard
 class CheckerBoard {
     // Offsets
-    private List<Point> team1offsets = Point.asList(new int[][]{{-1, -1}, {1, -1}});
-    private List<Point> team2offsets = Point.asList(new int[][]{{1, 1}, {-1, 1}});
-//    private List<Point> offsets = Point.asList(new int[][]{{1, 1}, {-1, -1}, {-1, 1}, {1, -1}});
+    private List<Point> offsets = Point.asList(new int[][]{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}});
     private Point[][] matrix;
     // Team Constants, Team1 is default team.
     private String team1 = "R";
@@ -113,57 +111,45 @@ class CheckerBoard {
     }
 
     public String toString() {
-        String result = "";
+        String[] result = new String[this.matrix.length];
         for(int x = 0; x < this.matrix.length; x++) {
             String[] temp = new String[this.matrix[x].length];
             for(int y = 0; y < this.matrix[x].length; y++) {
                 temp[y] = this.matrix[x][y].type.equals("") ? " " : this.matrix[x][y].type;  }
-            result += String.join(" - ", temp) + "\n";
+            result[x] = String.join(" - ", temp);
         }
-        return result;
+        return String.join("\n", result);
     }
 
-    public static boolean inBounds(Point point) {return CheckerBoard.inBounds(point.x, point.y);}
-    public static boolean inBounds(int x, int y) {return x >= 0 && y >= 0 && x < 8 && y < 8;}
-    Point getPoint(Point point) {return this.matrix[point.x][point.y];}
+    private static boolean inBounds(Point point) {return CheckerBoard.inBounds(point.x, point.y);}
+    private static boolean inBounds(int x, int y) {return x >= 0 && y >= 0 && x < 8 && y < 8;}
+    private Point getPoint(Point point) {return this.matrix[point.x][point.y];}
     String getType(Point point) {return this.matrix[point.x][point.y].type;}
-    boolean isReverse(Point first, Point second) {return (first.type.equals(team1) && second.type.equals(team2)) || (first.type.equals(team2) && second.type.equals(team1));}
+    private boolean isReverse(Point first, Point second) {return (first.type.equals(team1) && second.type.equals(team2)) || (first.type.equals(team2) && second.type.equals(team1));}
 
     // Just returns all Points with type designated
-    List<Point> getCheckers(String type) {
+    private List<Point> getCheckers(String type) {
         List<Point> found = new ArrayList<Point>();
-        for(int x = 0; x < this.matrix.length; x++) {
-            for(int y = 0; y < this.matrix[x].length; y++) {
-                if(this.matrix[x][y].type.equals(type))
-                    found.add(this.matrix[x][y]);
+        for (Point[] aMatrix : this.matrix) {
+            for(Point anAMatrix : aMatrix) {
+                if(anAMatrix.type.equals(type))
+                    found.add(anAMatrix);
             }
         }
         return found;
     }
 
-    List<Point> getOffsets(Point point) {
-        if(point.type.equals(team1))
-            return team1offsets;
-        else if(point.type.equals(team2))
-            return team2offsets;
-        else {
-            out.println(String.format("Invalid Team Type Detected - \"%s\"", point.type));
-            List<Point> offsets = new ArrayList<Point>();
-            offsets.addAll(team1offsets);
-            offsets.addAll(team2offsets);
-            return offsets;
-        }
-    }
-
-    int getMaxJumps(Point point) {
+    private int getMaxJumps(Point point) {
         List<Point> previous = new ArrayList<Point>();
         previous.add(point);
         return getMaxJumps(point, 0, previous);
     }
-    int getMaxJumps(Point point, int score, List<Point> previous) {
+    private int getMaxJumps(Point point, int score, List<Point> previous) {
         List<Integer> offsetScores = new ArrayList<Integer>();
         offsetScores.add(score);
-        for(Point offset : this.getOffsets(point)) {
+        for(Point offset : this.offsets) {
+            if(offset.x == 1)
+                continue;
             Point newPoint = point.merge(offset);
             // Ensure new point is in matrix bounds
             if(CheckerBoard.inBounds(newPoint)) {
@@ -189,8 +175,8 @@ class CheckerBoard {
     }
 
     // Scanning methods for best jumps
-    String scan() {return this.scan(this.team1);} // default to Red checkers
-    String scan(String team) {
+    public String scan() {return this.scan(this.team1);} // default to Red checkers
+    public String scan(String team) {
         List<Point> entries = getCheckers(team);
         List<Integer> jumps = new ArrayList<Integer>();
         // Scan each entry point for jumps
@@ -231,8 +217,7 @@ class problem12 {
 
             CheckerBoard cb = new CheckerBoard(rawMatrix);
             out.println(cb);
-
-                out.println(cb.scan());
+            out.println(cb.scan());
         }
 
         read.close();
