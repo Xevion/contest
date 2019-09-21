@@ -17,6 +17,7 @@ class Point {
     Point(int x, int y) {
         this.x = x;
         this.y = y;
+        this.type = "";
     }
 
     // Typed Point Constructor
@@ -28,7 +29,7 @@ class Point {
 
     // Returns a point which is the translated end-point based on the other point (offset).
     Point merge(Point other) {
-        return new Point(this.x + other.x, this.y + other.y);
+        return new Point(this.x + other.x, this.y + other.y, this.type);
     }
     
     void offset(Point other) {
@@ -46,13 +47,13 @@ class Point {
         );
     }
 
-    public boolean isEmpty() {
-        return this.type == "";
+    boolean isEmpty() {
+        return this.type.equals("");
     }
 
     // equals() method for testing equality of two Point() objects
     // positional untyped equality test, see fullEquals()
-    public boolean equals(Point other) {
+    boolean equals(Point other) {
         return this.x == other.x && this.y == other.y;
     }
 
@@ -62,7 +63,7 @@ class Point {
     }
 
     // Returns whether a point could be found in a collection
-    public boolean collectionContains(Collection<Point> collection) {
+    boolean collectionContains(Collection<Point> collection) {
         for(Point other : collection) {
             if(this.x == other.x && this.y == other.y) {
                 return true;
@@ -81,12 +82,10 @@ class Point {
         return -1;
     }
 
-    public static List<Point> asList(int[][] primitivePoints) {
+    static List<Point> asList(int[][] primitivePoints) {
         List<Point> points = new ArrayList<Point>();
-        for(int x = 0; x < primitivePoints.length; x++) {
-            for(int y = 0; y < primitivePoints[x].length; y++) {
-                points.add(new Point(x, y));
-            }
+        for (int[] primPoint: primitivePoints) {
+            points.add(new Point(primPoint[0], primPoint[1]));
         }
         return points;
     }
@@ -95,11 +94,13 @@ class Point {
 // Represents a checkers checkerboard
 class CheckerBoard {
     // Offsets
-    List<Point> offsets = Point.asList(new int[][]{{1, 1}, {-1, -1}, {-1, 1}, {1, -1}});
-    Point[][] matrix;
+    private List<Point> team1offsets = Point.asList(new int[][]{{-1, -1}, {1, -1}});
+    private List<Point> team2offsets = Point.asList(new int[][]{{1, 1}, {-1, 1}});
+//    private List<Point> offsets = Point.asList(new int[][]{{1, 1}, {-1, -1}, {-1, 1}, {1, -1}});
+    private Point[][] matrix;
     // Team Constants, Team1 is default team.
-    String team1 = "R";
-    String team2 = "B";
+    private String team1 = "R";
+    private String team2 = "B";
 
     CheckerBoard(String[][] matrix) {
         // Build the point matrix
@@ -111,11 +112,22 @@ class CheckerBoard {
         }
     }
 
+    public String toString() {
+        String result = "";
+        for(int x = 0; x < this.matrix.length; x++) {
+            String[] temp = new String[this.matrix[x].length];
+            for(int y = 0; y < this.matrix[x].length; y++) {
+                temp[y] = this.matrix[x][y].type.equals("") ? " " : this.matrix[x][y].type;  }
+            result += String.join(" - ", temp) + "\n";
+        }
+        return result;
+    }
+
     public static boolean inBounds(Point point) {return CheckerBoard.inBounds(point.x, point.y);}
     public static boolean inBounds(int x, int y) {return x >= 0 && y >= 0 && x < 8 && y < 8;}
     Point getPoint(Point point) {return this.matrix[point.x][point.y];}
     String getType(Point point) {return this.matrix[point.x][point.y].type;}
-    boolean isReverse(Point first, Point second) {return first.type == team1 ? second.type == team2 : (first.type == team2 ? second.type == team1 : false);}
+    boolean isReverse(Point first, Point second) {return (first.type.equals(team1) && second.type.equals(team2)) || (first.type.equals(team2) && second.type.equals(team1));}
 
     // Just returns all Points with type designated
     List<Point> getCheckers(String type) {
@@ -129,23 +141,45 @@ class CheckerBoard {
         return found;
     }
 
-    int getMaxJumps(Point point) {return getMaxJumps(point, 0, Arrays.asList(point));}
+    List<Point> getOffsets(Point point) {
+        if(point.type.equals(team1))
+            return team1offsets;
+        else if(point.type.equals(team2))
+            return team2offsets;
+        else {
+            out.println(String.format("Invalid Team Type Detected - \"%s\"", point.type));
+            List<Point> offsets = new ArrayList<Point>();
+            offsets.addAll(team1offsets);
+            offsets.addAll(team2offsets);
+            return offsets;
+        }
+    }
+
+    int getMaxJumps(Point point) {
+        List<Point> previous = new ArrayList<Point>();
+        previous.add(point);
+        return getMaxJumps(point, 0, previous);
+    }
     int getMaxJumps(Point point, int score, List<Point> previous) {
-        List<Integer> offsetScores = Arrays.asList(0);
-        for(Point offset : this.offsets) {
+        List<Integer> offsetScores = new ArrayList<Integer>();
+        offsetScores.add(score);
+        for(Point offset : this.getOffsets(point)) {
             Point newPoint = point.merge(offset);
             // Ensure new point is in matrix bounds
             if(CheckerBoard.inBounds(newPoint)) {
                 // Ensure new point is of reverse type
-                if(this.isReverse(newPoint, this.getPoint(newPoint))) {
-                    newPoint = point.merge(offset);
+                Point realPoint = this.getPoint(newPoint);
+                if(this.isReverse(point, realPoint)) {
+                    newPoint.offset(offset);
                     // Ensure second new point is inBounds & Empty
                     if(CheckerBoard.inBounds(newPoint)) {
                         if(this.getPoint(newPoint).isEmpty()) {
-                            // add new point to blacklist, ensuring we don't get a infinite recursive nightmare
-                            previous.add(newPoint);
-                            // will return at least 1
-                            offsetScores.add(getMaxJumps(newPoint, score + 1, previous));
+                            if(!newPoint.collectionContains(previous)) {
+                                // add new point to blacklist, ensuring we don't get a infinite recursive nightmare
+                                previous.add(new Point(newPoint.x, newPoint.y));
+                                // will return at least 1
+                                offsetScores.add(getMaxJumps(newPoint, score + 1, previous));
+                            }
                         }
                     }
                 }
@@ -158,15 +192,24 @@ class CheckerBoard {
     String scan() {return this.scan(this.team1);} // default to Red checkers
     String scan(String team) {
         List<Point> entries = getCheckers(team);
-        out.println(entries);
         List<Integer> jumps = new ArrayList<Integer>();
         // Scan each entry point for jumps
         for(Point entry : entries) {
             jumps.add(getMaxJumps(entry));
         }
-        // Return the best jump
-        out.println(jumps);
-        return Integer.toString(Collections.max(jumps));
+
+
+        // Find the best origin jump and it's score
+        Point bestpoint = new Point(-1, -1);
+        int bestscore = 0;
+        for(int i = 0; i < entries.size(); i++) {
+            if(bestscore < jumps.get(i)) {
+                bestscore = jumps.get(i);
+                bestpoint = entries.get(i);
+            }
+        }
+
+        return String.format("%s %s %s", bestpoint.x, bestpoint.y, bestscore);
     }
 }
 
@@ -185,12 +228,11 @@ class problem12 {
                 for(int y = 0; y < 8; y++)
                     rawMatrix[x][y] = line.substring(y, y+1);
             }
-            
-            for(String[] x : rawMatrix)
-                out.println(Arrays.toString(x));
-        
+
             CheckerBoard cb = new CheckerBoard(rawMatrix);
-            out.println(cb.scan());
+            out.println(cb);
+
+                out.println(cb.scan());
         }
 
         read.close();
