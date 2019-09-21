@@ -1,5 +1,6 @@
 # Custom Files
 uil/october-2013/3/input-generator/output/output.dat
+.vscode/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
