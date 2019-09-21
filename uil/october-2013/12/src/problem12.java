@@ -1,7 +1,6 @@
 import static java.lang.System.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,7 +30,8 @@ class Point {
     Point merge(Point other) {
         return new Point(this.x + other.x, this.y + other.y, this.type);
     }
-    
+
+    // Offsets the point by a Point's (x, y) set
     void offset(Point other) {
         this.x += other.x;
         this.y += other.y;
@@ -82,6 +82,7 @@ class Point {
         return -1;
     }
 
+    // Creates a List of Points based on a primitive int[][] matrix
     static List<Point> asList(int[][] primitivePoints) {
         List<Point> points = new ArrayList<Point>();
         for (int[] primPoint: primitivePoints) {
@@ -110,6 +111,7 @@ class CheckerBoard {
         }
     }
 
+    // toString method for a Checkerboard, prints a matrix of types
     public String toString() {
         String[] result = new String[this.matrix.length];
         for(int x = 0; x < this.matrix.length; x++) {
@@ -121,10 +123,13 @@ class CheckerBoard {
         return String.join("\n", result);
     }
 
+    // Simple functions for identifying whether a point is inBounds.
     private static boolean inBounds(Point point) {return CheckerBoard.inBounds(point.x, point.y);}
     private static boolean inBounds(int x, int y) {return x >= 0 && y >= 0 && x < 8 && y < 8;}
+    // Simple internal getter functions
     private Point getPoint(Point point) {return this.matrix[point.x][point.y];}
     String getType(Point point) {return this.matrix[point.x][point.y].type;}
+    // Identifies whether two points are opposite in types. R(ed) != B(lack)
     private boolean isReverse(Point first, Point second) {return (first.type.equals(team1) && second.type.equals(team2)) || (first.type.equals(team2) && second.type.equals(team1));}
 
     // Just returns all Points with type designated
@@ -139,11 +144,14 @@ class CheckerBoard {
         return found;
     }
 
+    // Starter function for finding max jumps at a point.
     private int getMaxJumps(Point point) {
         List<Point> previous = new ArrayList<Point>();
         previous.add(point);
         return getMaxJumps(point, 0, previous);
     }
+
+    // Recursively finds maximum possible jumps at a point.
     private int getMaxJumps(Point point, int score, List<Point> previous) {
         List<Integer> offsetScores = new ArrayList<Integer>();
         offsetScores.add(score);
