@@ -573,6 +573,10 @@ With this, one can easily build the list from the inside out with each method ca
 
 ## Question 37
 
+This question requires one to remember that `HashSet.add(E e)` returns a `boolean`, `true` when the element was inserted into the HashSet, and `false` when the element was already in it.
+
+The for-loop will run 34 times (`[1, 35)`), and thus, with the modulus, it will return true 7 times (important to note, the for-loop's range is very important, but here, it's simple). So, given 34 total iterations, and 7 successful insertions, there will be 27 failed insertions (`34 - 7 = 27`).
+
 ## Question 38
 
 ## Question 39
