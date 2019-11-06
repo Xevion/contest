@@ -474,7 +474,7 @@ This could error if there was no negative and it tried to take another double wi
 
 I ended with `7.5`.
 
-# Question 29
+## Question 29
 
 This deals with a new type of object, a Queue, specifically the PriorityQueue (PriorityQueue is akin to ArrayList as Queue is to List), they are specific, more advanced implementations (PriorityQueue & List).
 
@@ -514,3 +514,25 @@ q.peek();
 ```
 
 Be sure to read up on how Queues work, specifically the ordering, this can be very confusing and it will help to learn this, along with Comparators & Collections in general.
+
+## Question 30
+
+## Question 31
+
+## Question 32
+
+## Question 33
+
+## Question 34
+
+## Question 35
+
+## Question 36
+
+## Question 37
+
+## Question 38
+
+## Question 39
+
+## Question 40
