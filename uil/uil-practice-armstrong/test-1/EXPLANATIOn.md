@@ -68,7 +68,7 @@ The final array looks like `[0, 0, 4, 0, 0]`
 
 ## Question 7
 
-This is just pretty awful parantheses aside from the initial solving.
+This is just pretty awful parentheses aside from the initial solving.
 
 ```java
 !(!(!(...)))
@@ -252,7 +252,7 @@ The value given is `1234`, and we shift it left `6` times.
 
 The binary representation of `1234` is `10011010010`, so, to left shift it, we simply add 6 zeroes to the end. Now, we just convert it from it's new binary representation, `10011010010000000`, to base 10.
 
-It's final base 10 repsentation is 78976.
+It's final base 10 representation is 78976.
 
 
 ## Question 17
@@ -478,12 +478,12 @@ I ended with `7.5`.
 
 This deals with a new type of object, a Queue, specifically the PriorityQueue (PriorityQueue is akin to ArrayList as Queue is to List), they are specific, more advanced implementations (PriorityQueue & List).
 
-Let's go through and diagnose the behaviour of `offer()`, `peek()` and `poll()`.
+Let's go through and diagnose the behavior of `offer()`, `peek()` and `poll()`.
 
 ```java
 Queue<Integer> q = new PriorityQueue<>();
 >>> []
-> Initalizes the queue with zero items inside.
+> Initializes the queue with zero items inside.
 
 q.offer(15);
 >>> [15]
@@ -501,11 +501,11 @@ q.offer(9);
 
 q.poll();
 >>> [13, 15]
-> q.poll() is destructive in this context, and removes the 
+> q.poll() is destructive in this context, and removes the item just offered above (9).
 
 q.offer(q.peek());
 >>> [13, 15, 13]
-> q.offer() adds a item, and q.peek() looks at what would be returned by q.poll(), which would remove and item.
+> q.offer() adds a item, and q.peek() looks at what would be returned by q.poll(), which would remove an item.
 > Since however, you are peek()ing, it only adds a new item.
 
 q.peek();
@@ -513,4 +513,4 @@ q.peek();
 > peek() does not take items from the Queue, it only looks at what would be taken had you poll()'d.
 ```
 
-Be sure to read up on how Queues work, specificly the ordering, this can be very confusing and it will help to learn this, along with Comparators & Collections in general.
+Be sure to read up on how Queues work, specifically the ordering, this can be very confusing and it will help to learn this, along with Comparators & Collections in general.
