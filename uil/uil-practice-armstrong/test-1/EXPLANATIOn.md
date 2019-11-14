@@ -517,6 +517,10 @@ Be sure to read up on how Queues work, specifically the ordering, this can be ve
 
 ## Question 30
 
+This is pretty simple referencing stuff, but it gets very complicated on tests, so I recommend looking up stuff on "Pass by Value" and "Pass by reference" in Java, it's a whole topic of debate in conjunction with immutability, mutability, wrappers, primitives, objects, and more.
+
+Since everything here is a primitive, we can assume "pass by reference". Thus, simple math reveals that in the matrix, sub-array 1 and 2 swap via a temporary swap variable.
+
 ## Question 31
 
 ## Question 32
