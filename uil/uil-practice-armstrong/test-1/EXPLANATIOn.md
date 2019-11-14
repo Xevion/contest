@@ -523,6 +523,12 @@ Since everything here is a primitive, we can assume "pass by reference". Thus, s
 
 ## Question 31
 
+This question deals with regex. The expression used is "[^0-9]" (which replaces all that matches that with *nothing*).
+This expression matches all characters that are not integers (0, 1, 2, 3, 4, 5, 6, 7, 8 or 9). It only matches 1 character, but it matches as many as possible, and replaces all matched (with an empty string).
+
+This effectively will reduce the output string for `Array.toString` (`[a, b, c, d, e, f]`) to a sequence of digits.
+It replaces spaces, commas, brackets, and all other characters that *aren't  digits*.
+
 ## Question 32
 
 ## Question 33
