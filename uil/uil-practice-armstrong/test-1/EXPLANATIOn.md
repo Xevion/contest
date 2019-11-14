@@ -533,8 +533,8 @@ It replaces spaces, commas, brackets, and all other characters that *aren't  dig
 
 This is a more "trivia-like" question that most. Arrays.sort, in *Java SE 7*.
 The array in question is a primitive array, which is important, as the Arrays.sort() method will sort based on the content of the array.
-If the array is for objects, it will use "Timsort", which is a hybrid of *Merge Sort* and *Insertion Sort*.
-Otherwise, for primitives, it will use *Dual-Pivot Quicksort*.
+If the array is for -objects, it will use **"Timsort"**, which is a hybrid of *Merge Sort* and *Insertion Sort*.
+Otherwise, for primitives, it will use **Dual-Pivot Quicksort**.
 
 ## Question 33
 
