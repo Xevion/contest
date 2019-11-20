@@ -538,6 +538,15 @@ Otherwise, for primitives, it will use **Dual-Pivot Quicksort**.
 
 ## Question 33
 
+Here, you build an ArrayList of ArrayLists and print out the third array.
+Here, you'll want to concentrate on every number from 1 to 100 that is both odd, and when divided by 7, has a remainder of 3.
+
+It needs to be odd because you start at 1 and move along by 2 each iteration (`3 % 2 = 1`), and it needs to have a remainder of 3 when divided by 7 because it selects the correlating ArrayList based on the current number mod `7`, and since we focus on the ArrayList at index `3`, 
+
+To find all of them, start looking at every odd number that is divisible by both 7 and 2 in the range [1, 100), a good way to do this is start at 3 and add 14 continuously until your reach 99 or less.
+
+The list of these numbers is the output.
+
 ## Question 34
 
 ## Question 35
