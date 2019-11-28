@@ -549,6 +549,12 @@ The list of these numbers is the output.
 
 ## Question 34
 
+LIFO means "Last In, First Out".
+This means, the last item to be put in is the first item to be extracted.
+For example, the numbers 4, 3, 7, 8, and 16 are put into a data structure that operates in a LIFO manner. When a program thereafter attempts to extract numbers, they are extracted in reverse, i.e. 16, 8, 7, 3, and 4.
+
+**Stack**s operate in this manner, simply think of them as a stack of bricks, cards, boxes etc. You can't extract the bottom item first (because it has a buch of items on top) before you extract the one before it (on top). You must extract the one on top (the last one you placed) before any other.
+
 ## Question 35
 
 ## Question 36
