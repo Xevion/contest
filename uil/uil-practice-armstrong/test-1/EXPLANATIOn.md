@@ -557,7 +557,19 @@ For example, the numbers 4, 3, 7, 8, and 16 are put into a data structure that o
 
 ## Question 35
 
+Another trivia-like question, the initial capacity for an ArrayList (if not specified) is 10.
+
 ## Question 36
+
+A LinkedList offers a massive selection of methods useful for manipulating it.
+Some of the methods, one can decipher the meaning of, like `offerFirst` and `offerLast`, but you won't know `offer`, at least not immediately.
+
+`offer(E e)` adds the specified element to the end of the list.
+`offerFirst(E e)` adds the specified element to the start of the list.
+`offerLast(E e)` adds the specified element to the end of the list.
+`offerLast(E e)` has no discernable difference from `offer(E e)`.
+
+With this, one can easily build the list from the inside out with each method call.
 
 ## Question 37
 
