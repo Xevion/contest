@@ -3,8 +3,13 @@
 ## Method Explanation
 
 **Offer vs Add vs Push**
+<detail on methods basics>
 
+**Offer vs Add**
+<detail on Exceptions>
 
+**Poll vs Remove vs Pop**
+<detail on method basics>
 
 ## Methods
 
