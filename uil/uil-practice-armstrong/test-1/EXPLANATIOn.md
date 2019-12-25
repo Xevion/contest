@@ -448,3 +448,69 @@ Class X is a implementation of the Comparable Interface, and is essentially a me
 The `compareTo` method is how comparables "compare", and it returns a integer value to representation how it should be placed in the array. The array is sorted in descending order when `Collections.sort` is called on it.
 
 The integer it returns is calculated based on the length first: if the two Strings have the same length, it returns the result of the two strings `compareTo` method, but if they're not the same length, it returns the difference in length of the two Strings.
+
+## Question 27
+
+Just know your data types.
+
+```javascript
+long => 64bit integer
+int => 32bit integer
+byte => 8bit integer
+double => 64bit float
+float => 32bit float
+short => 16bit float
+```
+
+## Question 28
+
+Just follow a simple idea as you look at each number in the String, take the first, check if it's more than zero.
+
+If so, take the next double and add it to the sum variable you're keeping track of.
+
+Repeat until the first condition evaluates to false.
+
+This could error if there was no negative and it tried to take another double without one being present.
+
+I ended with `7.5`.
+
+# Question 29
+
+This deals with a new type of object, a Queue, specifically the PriorityQueue (PriorityQueue is akin to ArrayList as Queue is to List), they are specific, more advanced implementations (PriorityQueue & List).
+
+Let's go through and diagnose the behaviour of `offer()`, `peek()` and `poll()`.
+
+```java
+Queue<Integer> q = new PriorityQueue<>();
+>>> []
+> Initalizes the queue with zero items inside.
+
+q.offer(15);
+>>> [15]
+> This adds a 15, which positions itself at the head of the Queue.
+
+q.offer(13);
+>>> [13, 15]
+> This adds a 13, which positions itself at the head of the Queue.
+> 15 is moved from the head of the Queue as a lesser item has taken its place: 13.
+
+q.offer(9);
+>>> [9, 13, 15]
+> This adds a 9, which positions itself at the head of the Queue.
+> Again, 13 has been moved back in place of 9, which is even lesser than 13 & 15.
+
+q.poll();
+>>> [13, 15]
+> q.poll() is destructive in this context, and removes the 
+
+q.offer(q.peek());
+>>> [13, 15, 13]
+> q.offer() adds a item, and q.peek() looks at what would be returned by q.poll(), which would remove and item.
+> Since however, you are peek()ing, it only adds a new item.
+
+q.peek();
+>>> 13
+> peek() does not take items from the Queue, it only looks at what would be taken had you poll()'d.
+```
+
+Be sure to read up on how Queues work, specificly the ordering, this can be very confusing and it will help to learn this, along with Comparators & Collections in general.
