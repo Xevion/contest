@@ -171,7 +171,7 @@ What I'm talking about is the `unary operators`, `++` and `--`.
 
 Pre-increment `++x` 
 
-Post-increment `y--`
+Post-increment `y++`
 
 Post-decrement `--this.halogen.id` 
 
@@ -184,7 +184,7 @@ Pre-increment `dragon.level++`
    ```java
    int x = 3;
    int y = 4;
-   println(++x + ++y + y++)
+   out.println(++x + ++y + y++)
    ```
 
    The evaluating engine (or whatever) sees a 4 with the pre-increment operator, x is incremented to 4, and returns a 4. Then, y is incremented to 5, and the operator returns a 5.
