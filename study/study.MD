@@ -1,14 +1,18 @@
 # Study
 
-Questions I missed, things I need to pay attention to, study, or otherwise practice.
+Questions I missed, things I need to pay attention to, study, or otherwise practice. All of these are curated from both online resources and my own experiences.
+
+While I may claim most of these to be right, and it should, make sure to research and confirm anything you wish to take from this file.
+
+If you find something incorrect, feel free to contribute and modify.
 
 ## 2020
 
 ### Compound Assignment Operators
 ```
 int x = 12;
-int x += 2.6;
-x = x + (int)2.6;
+// x = x + (int)2.6;
+x += 2.6;
 ```
 
 Compound assignment operators effectively cast *before assigning values* to the specified variables.
@@ -92,7 +96,7 @@ out.println("xx0x0x0x".split("x", 3));
 ### Java's Primary Four OOP Concepts
 
 * Abstraction
-    * Complex objects are given relatively simple forms. Complex code is hidden within a much simpler face. Code is rewritten less.
+    * Complex objects are given relatively simple forms. Complex code is hidden within a much simpler face. Code is rewritten less. Very similar to Encapsulation.
     ```java
     class Maze {
         // Contains few overloaded public methods, but many complex private methods.
@@ -175,3 +179,77 @@ out.println("xx0x0x0x".split("x", 3));
                 }
             }
             ```
+
+### Abstraction vs Encapsulation
+
+I've noticed that Abstraction and Encapsulation look *very* similar, and looking it up, it seems it's pretty common to mix it up.
+
+![Abstraction vs Encapsulation Diagram by "zaynali53"](https://i.imgur.com/LzTH3qu.png)
+
+I would mostly pay attention to what it looks like, more than truly understanding it. Tests will more likely show code with `Interface/Abstract Class` and ask you to determine what OOP Concept is being demonstrated, rather than a complex concept example.
+
+### Other important OOP concepts 
+
+* Coupling
+    * Refers to how tightly or loosely two objects depend on or use eachother.
+        * Tight Coupling 
+            * For example, a tightly coupled relationship, a Human and his/her Heart, they are highly dependent on eachother to continue life.
+            ```java
+            class Human {
+                private Heart heart;
+                
+                Human(int age) {
+                    this.heart = new Heart(age);
+                }
+            }
+
+            class Heart {
+                Heart(int age) {}
+            }
+            ```
+            * I'd believe the most likely thing you want to look for is a object within an object, especially one with methods that seem to  'pair' the two objects to eachother.
+                * If you tried to implement the second object within a different outer class, how much code would have to change to handle this larger usability?
+        * Loose Coupling
+            * For example, a Teacher and a Student. Interactions between these two objects can be observed as infrequently as one desires, to the point where one can exist without the other.
+
+### Bad AP practices
+
+Some practices are likely to earn a more detailed inspection of the code than others, some stand out more, essentially. Here's a short compilation of what practices most likely win in this regard...
+
+#### Why?
+
+Grading of Handwritten code is more difficult and harder to do, as it can't be quickly verified to work, and since real life implementation of code is much more messy (no one writes perfect code the first time), it's probably a good thing AP graders are not going to grade Free Responses with perfect accuracy.
+
+The take-away from this is essentially: write the most boring code, conform to the standards, don't be special. Graders will be seeing a million tests that look all the same, and they won't be able to dedicate their time to each and every problem. Looking like all the others can only help you when you make a tiny mistake.
+
+In fact, it's likely that aspiring Software Engineers will want to get used to this treatment for the future, as writing code that is easy to understand is far more valuable than code that no one can understand (even if it works a little better in the short run).
+
+#### Guidelines
+
+* Ternary Operators
+    * Ternary Operators are a uncommon operator, and while AP test graders should know of it, it might be better to retreat to a much simpler `if else` statement in the long run.
+* Variable Names
+    * Try to decipher what most people would likely name a variable from the prompt.
+    * If the prompt says "number of days passed", you should write `int daysPassed`, but not `int DAYSPASSED`, or `double daysGONEby` and so forth.
+* Good Handwriting
+    * Bad handwriting requires more attention when grading, attempt to write cleaner so as to reduce the time graders spend looking at your paper.
+    * Make sure your lines are straight across the paper, and do not slant haphazardly.
+    * Write somewhat large. Not excessively large, but larger than one would do for Essays in English and other writing assignments. Gauge how much room you need to answer the Free Response and write in a size accordingly.
+    * APCentral has actually released a example of good penmanship, seen below.
+    ![APCentral Penmanship Example](https://i.imgur.com/mx1PP73.gif)
+* Bracketing Style
+    * When writing brackets, follow this format (I may not be following this format in the rest of this file, sorry).
+    ```java
+    class File
+    {
+        private String path;
+        File(String path)
+        {
+            this.path = path;
+        }
+
+        void print()
+        {
+            // print the file
+        }
+    }
