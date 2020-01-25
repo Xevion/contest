@@ -6,10 +6,15 @@ While I may claim most of these to be right, and it should, make sure to researc
 
 If you find something incorrect, feel free to contribute and modify.
 
-## 2020
+## Table of Contents
+
+[TOC]
+
+## All concepts
 
 ### Compound Assignment Operators
-```
+
+```java
 int x = 12;
 // x = x + (int)2.6;
 x += 2.6;
@@ -210,6 +215,7 @@ I would mostly pay attention to what it looks like, more than truly understandin
             * I'd believe the most likely thing you want to look for is a object within an object, especially one with methods that seem to  'pair' the two objects to eachother.
                 * If you tried to implement the second object within a different outer class, how much code would have to change to handle this larger usability?
         * Loose Coupling
+          
             * For example, a Teacher and a Student. Interactions between these two objects can be observed as infrequently as one desires, to the point where one can exist without the other.
 
 ### Bad AP practices
@@ -227,6 +233,7 @@ In fact, it's likely that aspiring Software Engineers will want to get used to t
 #### Guidelines
 
 * Ternary Operators
+  
     * Ternary Operators are a uncommon operator, and while AP test graders should know of it, it might be better to retreat to a much simpler `if else` statement in the long run.
 * Variable Names
     * Try to decipher what most people would likely name a variable from the prompt.
@@ -253,6 +260,7 @@ In fact, it's likely that aspiring Software Engineers will want to get used to t
             // print the file
         }
     }
+    ```
 
 ### Most Common Imports
 
@@ -272,7 +280,7 @@ import java.util.Arrays;
 > Arrays.toString(new int[]{});
 ```
 
-### Declare, Instantiate, Initalize
+### Declare, Instantiate, Initialize
 
 * Declaration: The code set in bold are all variable declarations that associate a variable name with an object type.
     ```java
@@ -285,7 +293,7 @@ import java.util.Arrays;
     ```java
         Point origin = new Point();
     ```
-    * Initialization: The new operator is followed by a call to a constructor, which initializes the new object. Instantiation and Initalization almost always occur on the same line, in the same instant.
+    * Initialization: The new operator is followed by a call to a constructor, which initializes the new object. Instantiation and Initialization almost always occur on the same line, in the same instant.
     ```java
     class Point
     {
@@ -299,12 +307,53 @@ import java.util.Arrays;
     }
     ```
 
+### Default Array Values
+
+#### Primitive Arrays
+
+[Try it yourself](https://repl.it/@Xevion/PrimitiveArrayNullOrZero) at [repl.it](https://repl.it/)
+
+#### ArrayList Arrays
+
 ### When Primitive Array Casts Are Required
 
-Primitive Arrays can be declared and 
+Primitive Arrays can be declared and initialized in all these ways.
 
 ```java
 int[] myIntArray = new int[3];
 int[] myIntArray = {1, 2, 3};
 int[] myIntArray = new int[]{1, 2, 3};
 ```
+
+Option 3 may seem rather extraneous to the Java language, but it actually has a very specific purpose.
+
+```java
+static String[] method() {
+    return {"Method1", "Method2", "Method3"};
+}
+```
+will not compile, as the compiler expects a type for primitive array literals.
+
+```java
+static String[] method2() {
+    return new String[]{"Method1", "Method2", "Method3"};
+}
+```
+
+It also expects a `new`, not just `String[]` before the *literal* part of a literal array definition.
+
+### Basic Boolean Circuitry
+
+### How to rotate Matrixes
+
+### Boolean Truth Tables & Symbols
+
+### Bitwise Meanings
+
+### What is Stack, Queue, LinkedList, ArrayList, 
+
+### How to Sort different types of Arrays
+
+#### Primitives
+
+#### ArrayList/
