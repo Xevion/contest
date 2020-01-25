@@ -441,6 +441,10 @@ Matches!
 
 This is a rather long problem, so let's split it up into parts.
 
+Also, see the relevant .java file created custom for this question.
+
+[question26.java](./question26.java)
+
 ### Class X
 
 Class X is a implementation of the Comparable Interface, and is essentially a method for comparing Strings when sorted. Focus on the `compareTo` method.
@@ -514,6 +518,10 @@ q.peek();
 ```
 
 Be sure to read up on how Queues work, specifically the ordering, this can be very confusing and it will help to learn this, along with Comparators & Collections in general.
+
+Take a look at the relevant java file to test it yourself!
+
+[question29.java](./question29.java)
 
 ## Question 30
 
