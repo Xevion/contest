@@ -253,3 +253,58 @@ In fact, it's likely that aspiring Software Engineers will want to get used to t
             // print the file
         }
     }
+
+### Most Common Imports
+
+```java
+import static java.lang.System.out;
+> out.println("shorthand println");
+import java.io.File; // Read and Write files
+> File input = new File("input1.dat"); // can be thrown directly into a Scanner's input
+import java.io.FileNotFoundException;
+> public static void main(String[] args ) throws FileNotFoundException {
+import java.util.Scanner;
+> Scanner s = new Scanner();
+> s.nextInt();
+> s.hasNextInt();
+> s.nextLine();
+import java.util.Arrays;
+> Arrays.toString(new int[]{});
+```
+
+### Declare, Instantiate, Initalize
+
+* Declaration: The code set in bold are all variable declarations that associate a variable name with an object type.
+    ```java
+        type name;
+        int age;
+        double magnitude;
+        Point origin;
+    ```
+* Instantiation: The new keyword is a Java operator that creates the object.
+    ```java
+        Point origin = new Point();
+    ```
+    * Initialization: The new operator is followed by a call to a constructor, which initializes the new object. Instantiation and Initalization almost always occur on the same line, in the same instant.
+    ```java
+    class Point
+    {
+        private int x;
+        private int y;
+        Point(int x, int y)    <--- Initalization
+        {                      <---      is
+            this.x = x;        <---   occurring
+            this.y = y;        <---     right
+        }                      <---     here
+    }
+    ```
+
+### When Primitive Array Casts Are Required
+
+Primitive Arrays can be declared and 
+
+```java
+int[] myIntArray = new int[3];
+int[] myIntArray = {1, 2, 3};
+int[] myIntArray = new int[]{1, 2, 3};
+```
