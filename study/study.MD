@@ -35,15 +35,15 @@ Binary literals are defined with a `0b` or `0B` prefix.
 
 ### Return Types
 
-Check **return type** of methods!
+Check **return type** of methods! Pretty simple, but easy to miss when speeding through a test.
 
-### Binary Search Trees
+### Binary Trees
 
 Become familiar with how Binary Search Trees are created, and how one can manipulate them to create and level of elements.
 
 More specifically, how many levels can a 32 element tree have if maximized?
 
-Additionally, study **Min Heap**, **Max Heap**, **Complete Trees**, **Perfect Trees**,  **Strict Trees**, **Balanced Trees**,   **BST Trees**, and what a **Child Node** and **Leaf Node** is.
+Additionally, the concepts below should be studied and memorized for maximum effect.
 
 * Min Heap
     * Every node's child nodes are greater or equal to itself (i.e. smaller nodes higher up).
@@ -52,13 +52,26 @@ Additionally, study **Min Heap**, **Max Heap**, **Complete Trees**, **Perfect Tr
     * Every node's child nodes are less than or equal to itself (i.e. greater nodes higher up).
     * Binary Tree is complete.
 * Complete Trees
-    * 
+    *  Every level is filled (no null/empty spaces) except for the last, which has all nodes as far to the left as possible.
 * Perfect Trees
-* Strict Trees
+    * Every internal node has two children, and all leaf nodes are at the same level.
+        * The binary tree will look like a triangle at every height.
+        * The tree will contain `(2 ^ h) - 1` nodes.
+* Full Trees
+    * Also known as a "Proper Binary Tree" or "2-tree" or "Strict Tree".
+    * A tree where every node other than the Leaf Nodes has at least 2 has two children.
 * Balanced Trees
-* BST Trees
+    * A binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+    * To determine if a binary tree is unbalanced, find a node where the subtree on the left or right is two levels deeper (or 'shallower') than the other.
+* Binary Search Tree (BST) Trees
+    * The left subtree of a node contains only nodes with keys lesser than the node’s key.
+    * The right subtree of a node contains only nodes with keys greater than the node’s key.
+    * The left and right subtree each must also be a binary search tree.
 * Child Node
+    * Self explanatory, a node to the bottom left or right of a parent node. Child nodes traditionally do not include child nodes of child nodes, which is is instead referred to as a "subtree" or "grandchild node".
 * Leaf Node
+    * A node where the left and right child nodes are null or empty.
+    * Can be spotted usually at the "bottom" of the tree, or "farthest" from the root node.
 
 ### String.split Trailing Strings
 
