@@ -8,9 +8,10 @@ Questions I missed, things I need to pay attention to, study, or otherwise pract
 ```
 int x = 12;
 int x += 2.6;
+x = x + (int)2.6;
 ```
 
-Compound assignment operators  
+Compound assignment operators effectively cast *before assigning values* to the specified variables.
 
 ### Octal Literals
 
