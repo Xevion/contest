@@ -344,7 +344,7 @@ It also expects a `new`, not just `String[]` before the *literal* part of a lite
 
 ### Basic Boolean Circuitry
 
-### How to rotate Matrixes
+### How to Rotate Matrixes
 
 ### Boolean Truth Tables & Symbols
 
