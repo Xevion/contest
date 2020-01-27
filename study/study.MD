@@ -299,7 +299,7 @@ import java.util.Arrays;
     {
         private int x;
         private int y;
-        Point(int x, int y)    <--- Initalization
+        Point(int x, int y)    <--- Initialization
         {                      <---      is
             this.x = x;        <---   occurring
             this.y = y;        <---     right
@@ -350,10 +350,94 @@ It also expects a `new`, not just `String[]` before the *literal* part of a lite
 
 ### Bitwise Meanings
 
-### What is Stack, Queue, LinkedList, ArrayList, 
+### Common Java Data Structures Summary
 
-### How to Sort different types of Arrays
+Java contains many object based data structures that you can import, some used more than others (ArrayList, for example). 
+
+Not all of them work in familiar ways, and their methods can be confusing without proper usage, study, and a quick explanation over how they're used.
+
+#### Interfaces
+##### Collection
+
+Common Implementing SubInterfaces:
+* Deque
+* List
+* Queue
+* Set
+* SortedSet
+
+Common Implementing Classes: 
+* ArrayList
+* ArrayDeque
+* EnumSet
+* HashSet
+* LinkedList
+* PriorityQueue
+* Stack
+* TreeSet
+
+##### Iterable 
+
+Common Implementing SubInterfaces
+* Collection
+* Deque
+* List
+* Queue
+* Set
+* SortedSet
+
+Common Implementing Classes:
+* ArrayDeque
+* ArrayList
+* EnumSet
+* HashSet
+* LinkedList
+* PriorityQueue
+* Stack
+* TreeSet
+
+##### List
+
+Super Interfaces:
+* Collection
+* Iterable
+
+Implementing Classes:
+* ArrayList
+* LinkedList
+* Stack
+
+A unordered collection (also known as a *sequence*) that allows precise control over where each element is inserted in a list.
+
+Users have methods allowing all of the following to methods:
+* 4 methods providing positional index-based access to list elements.
+* 1 method for accessing a special iterator, `ListIterator` allowing element insertion and replacement starting from a specified position.
+* 2 methods for searching for a specified object. Usually *costly* linear searches.
+* 2 methods for efficiently inserting and removing *multiple* elements at an arbitrary point.
+
+##### Set
+##### Queue
+##### Deque
+##### SortedSet
+##### Map
+##### SortedMap
+##### NavigableMap
+
+#### Classes
+##### ArrayList
+##### LinkedList
+##### Stack
+##### PriorityQueue
+##### TreeSet
+##### ArrayDeque
+##### EnumSet
+##### HashSet
+##### HashMap
+
+### How to Sort Different Types of Arrays
+
+For arrays, they can be sorted using `Arrays.sort` from `java.util.Arrays`.
+
+For lists, one can use `Collections.sort` to sort any class that implements the `List` interface.
 
 #### Primitives
-
-#### ArrayList/
