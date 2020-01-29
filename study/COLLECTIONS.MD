@@ -109,6 +109,10 @@ list = new Vector<Integer>();
 
 ### Queue Interface
 
+A Queue implements a basic first-in, first-out (FIFO) order. It is a ordered list (based on the order of insertion, not by 'value') which typically holds items that are in waiting list to be processed.
+
+Queue interface is implemented by the classes (and interfaces) [PriorityQueue](#priorityqueue-class), [Deque](#deque-interface), and [ArrayDeque](#arraydeque-class).
+
 ### Deque Interface
 
 ### Set Interface
