@@ -148,6 +148,16 @@ s = new TreeSet<Double>();
 
 ### SortedSet Interface
 
+SortedSet is an extension of the [Set](#set-interface) interface and provides a completely ordered list of elements contrary to the unordered parental [Set](#set-interface) interface.
+
+The SortedSet interface is arranged in **ascending order**, and provides additional methods that assist with this differing *ordered* methodology.
+
+SortedSet is implemented by one class, [TreeSet](#treeset-class).
+
+```java
+SortedSet s = new TreeSet();
+```
+
 ## Classes
 
 ### ArrayList Class
