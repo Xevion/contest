@@ -79,11 +79,15 @@ However, the real power comes from the next set of interfaces, and the special m
 
 ### Iterator Interface
 
+Iterators are specialized data structures that allow traversal, data access, and data deletion (directly to the linked *original* collection).
+
+They are similar to Java's Enumeration interface.
+
 ### Iterable Interface
 
 The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
 
-It contains only one abstract method, `Iterator<T> iterator()` which returns the `Iterator` object used to iterate over the elements of the datastructure (type `T`).
+It contains only one abstract method, `Iterator<T> iterator()` which returns the `Iterator` object used to iterate over the elements of the data structure (type `T`).
 
 ### Collection Interface
 
