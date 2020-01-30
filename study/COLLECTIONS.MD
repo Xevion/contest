@@ -115,6 +115,10 @@ Queue interface is implemented by the classes (and interfaces) [PriorityQueue](#
 
 ### Deque Interface
 
+An extension of the [Queue](#queue-interface) Interface, the Deque can remove and add elements from both sides of the list. It stands for *double-ended queue* (addition and removal ops can be done on both sides).
+
+Side note: Deque is pronounced like Deck (i.e. a deck of cards), not like DQ (Dee-Cue) as might be interpreted based on it's underlying meaning.
+
 ### Set Interface
 
 ### SortedSet Interface
