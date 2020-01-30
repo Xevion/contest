@@ -133,6 +133,19 @@ Deque<String> d = new ArrayDeque<String>();
 
 ### Set Interface
 
+A Set is a unordered list of elements with one basic principle different - all items are unique, duplicate elements are not allowed.
+
+While `null` values are allowed in Sets, the element distinction rule is passed on to `null` values too, and thus at most only one can be in a Set at any time.
+
+Set is implemented by [HashSet](#hashset-class), [LinkedHashSet](#linkedhashset-class), and [TreeSet](#treeset-class).
+
+```java
+Set<Double> s;
+s = new HashSet<Double>();
+s = new LinkedHashSet<Double>();
+s = new TreeSet<Double>();
+```
+
 ### SortedSet Interface
 
 ## Classes
