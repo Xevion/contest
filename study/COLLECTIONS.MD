@@ -113,11 +113,24 @@ A Queue implements a basic first-in, first-out (FIFO) order. It is a ordered lis
 
 Queue interface is implemented by the classes (and interfaces) [PriorityQueue](#priorityqueue-class), [Deque](#deque-interface), and [ArrayDeque](#arraydeque-class).
 
+```java
+Queue<Integer> q;
+q = new PriorityQueue<Integer>();
+q = new ArrayDeque<Integer>(); // Deque Interface is an extension of Queue
+```
+
 ### Deque Interface
 
 An extension of the [Queue](#queue-interface) Interface, the Deque can remove and add elements from both sides of the list. It stands for *double-ended queue* (addition and removal ops can be done on both sides).
 
 Side note: Deque is pronounced like Deck (i.e. a deck of cards), not like DQ (Dee-Cue) as might be interpreted based on it's underlying meaning.
+
+Deque is implemented in the class [ArrayDeque](#arraydeque-class)
+
+```java
+Deque<String> d;
+d = new ArrayDeque<String>();
+```
 
 ### Set Interface
 
