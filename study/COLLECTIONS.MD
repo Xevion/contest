@@ -128,8 +128,7 @@ Side note: Deque is pronounced like Deck (i.e. a deck of cards), not like DQ (De
 Deque is implemented in the class [ArrayDeque](#arraydeque-class)
 
 ```java
-Deque<String> d;
-d = new ArrayDeque<String>();
+Deque<String> d = new ArrayDeque<String>();
 ```
 
 ### Set Interface
