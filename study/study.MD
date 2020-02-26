@@ -350,89 +350,7 @@ It also expects a `new`, not just `String[]` before the *literal* part of a lite
 
 ### Bitwise Meanings
 
-### Common Java Data Structures Summary
 
-Java contains many object based data structures that you can import, some used more than others (ArrayList, for example). 
-
-Not all of them work in familiar ways, and their methods can be confusing without proper usage, study, and a quick explanation over how they're used.
-
-#### Interfaces
-##### Collection
-
-Common Implementing SubInterfaces:
-* Deque
-* List
-* Queue
-* Set
-* SortedSet
-
-Common Implementing Classes: 
-* ArrayList
-* ArrayDeque
-* EnumSet
-* HashSet
-* LinkedList
-* PriorityQueue
-* Stack
-* TreeSet
-
-##### Iterable 
-
-Common Implementing SubInterfaces
-* Collection
-* Deque
-* List
-* Queue
-* Set
-* SortedSet
-
-Common Implementing Classes:
-* ArrayDeque
-* ArrayList
-* EnumSet
-* HashSet
-* LinkedList
-* PriorityQueue
-* Stack
-* TreeSet
-
-##### List
-
-Super Interfaces:
-* Collection
-* Iterable
-
-Implementing Classes:
-* ArrayList
-* LinkedList
-* Stack
-
-A unordered collection (also known as a *sequence*) that allows precise control over where each element is inserted in a list.
-
-Users have methods allowing all of the following to methods:
-* 4 methods providing positional index-based access to list elements.
-* 1 method for accessing a special iterator, `ListIterator` allowing element insertion and replacement starting from a specified position.
-* 2 methods for searching for a specified object. Usually *costly* linear searches.
-* 2 methods for efficiently inserting and removing *multiple* elements at an arbitrary point.
-
-##### Set
-##### Queue
-##### Deque
-##### SortedSet
-##### Map
-##### SortedMap
-##### NavigableMap
-
-#### Classes
-##### ArrayList
-##### LinkedList
-##### Stack
-##### PriorityQueue
-##### TreeSet
-##### ArrayDeque
-##### EnumSet
-##### HashSet
-##### HashMap
 
 ### How to Sort Different Types of Arrays
 
@@ -486,8 +404,20 @@ A obj = new B();
 
 Here, it would be normal to assume that it simply prints a asterisk.
 
-### List.remove Shifts All Elements
+But really, 
 
-The List.remove interface method is defined to shift all elements over.
+### List.remove() Element Shifting
 
-Be careful not to increment to handle what the equivalent of 'removing' in a array would be, when you're working with a ArrayList.
+[RemoveEvenIntegers on repl.it](https://repl.it/@Xevion/RemoveEvenIntegers)
+
+The `List.remove` method interface method shifts all elements over to the left. It's important that you don't increment, and that you instead *decrement* while using a for loop along lists like this.
+
+Make sure while answering multiple choice with questions like that that you pay attention to how they move along the array.
+
+```java
+public static void clearInteger(ArrayList<Integer> arr) {
+        for(int i = 0; i < arr.size(); i++)
+            if(arr.get(i) % 2 == 0)
+                arr.remove(i--);
+    }
+```
