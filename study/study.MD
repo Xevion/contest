@@ -404,7 +404,16 @@ A obj = new B();
 
 Here, it would be normal to assume that it simply prints a asterisk.
 
-But really, 
+But, as one should know, Java inserts a no-argument `super()` call to the superclass *if one is not **explicitly** invoked* inside the subclass constructor.
+
+Behind the scenes, `B`'s constructor really behaves like this:
+
+```java
+B() {
+    super()
+    out.println("*");
+}
+```
 
 ### List.remove() Element Shifting
 
