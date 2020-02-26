@@ -311,7 +311,7 @@ import java.util.Arrays;
 
 #### Primitive Arrays
 
-[Try it yourself](https://repl.it/@Xevion/PrimitiveArrayNullOrZero) at [repl.it](https://repl.it/)
+[Run on Repl.it](https://repl.it/@Xevion/PrimitiveArrayNullOrZero)
 
 #### ArrayList Arrays
 
@@ -441,3 +441,53 @@ For arrays, they can be sorted using `Arrays.sort` from `java.util.Arrays`.
 For lists, one can use `Collections.sort` to sort any class that implements the `List` interface.
 
 #### Primitives
+
+#### List Implementees (ArrayList, ?, ?..)
+
+### char And int Are Interchangable
+
+```
+void method(int a, char b)
+method('c', 44)
+// method('g', 78900)
+```
+char limit 65535
+
+### Classes Call From Where They Originate
+
+Classes call from where they originate, not where they are.
+For example, given this setup, can you guess what will occur?
+
+```java
+class A {
+    A() {
+        method();
+    }
+
+    void method() {
+        out.println("A");
+    }
+}
+
+class B {
+    B() {
+        out.println("*");
+    }
+
+    void method() {
+        out.println("B");
+    }
+}
+```
+
+```
+A obj = new B();
+```
+
+Here, it would be normal to assume that it simply prints a asterisk.
+
+### List.remove Shifts All Elements
+
+The List.remove interface method is defined to shift all elements over.
+
+Be careful not to increment to handle what the equivalent of 'removing' in a array would be, when you're working with a ArrayList.
