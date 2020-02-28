@@ -6,7 +6,7 @@
 
 ## Practice Contest
 
-| Letter | Name                           | Status   |
+| Letter | Problem Name                   | Status   |
 |--------|--------------------------------|----------|
 | A      | Are You Listening              | Solved   |
 | B      | Harshad Numbers                | Solved   |
@@ -17,7 +17,7 @@
 
 ## Real Contest
 
-| Letter | Name                           | Status   |
+| Letter | Problem Name                   | Status   |
 |--------|--------------------------------|----------|
 | A      | Car Vet                        | Unsolved |
 | B      | Difference                     | Unsolved |
