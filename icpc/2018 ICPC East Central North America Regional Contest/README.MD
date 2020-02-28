@@ -1,21 +1,17 @@
 # 2018 ICPC East Central North America Regional Contest
 
-[Report](http://acm-ecna.ysu.edu/PastResults/2018/home.html) | []
-
-## Notice
-
-Most of these problems seem modestly easy, if I'm being honest.
+**[Final Report and Results](http://acm-ecna.ysu.edu/PastResults/2018/home.html)**
 
 ## Progress
 
-#A : **Solved**
+**A** : **Solved**
 
-#B : **Solved**
+**B** : **Solved**
 
-#C : Unsolved
+**C** : Unsolved
 
-#D : **Solved**
+**D** : **Solved**
 
-#E : **Solved**
+**E** : **Solved**
 
-#F : **Solved**
+**F** : **Solved**
