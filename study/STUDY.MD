@@ -8,7 +8,40 @@ If you find something incorrect, feel free to contribute and modify.
 
 ## Table of Contents
 
-[TOC]
+<!-- TOC -->
+
+- [Study](#study)
+    - [Table of Contents](#table-of-contents)
+    - [All concepts](#all-concepts)
+        - [Compound Assignment Operators](#compound-assignment-operators)
+        - [Octal Literals](#octal-literals)
+        - [Common Mistakes](#common-mistakes)
+        - [Binary Trees](#binary-trees)
+        - [String.split Trailing Strings](#stringsplit-trailing-strings)
+        - [Java's Primary Four OOP Concepts](#javas-primary-four-oop-concepts)
+        - [Abstraction vs Encapsulation](#abstraction-vs-encapsulation)
+        - [Other important OOP concepts](#other-important-oop-concepts)
+        - [Bad AP practices](#bad-ap-practices)
+            - [Why?](#why)
+            - [Guidelines](#guidelines)
+        - [Most Common Imports](#most-common-imports)
+        - [Declare, Instantiate, Initialize](#declare-instantiate-initialize)
+        - [Default Array Values](#default-array-values)
+            - [Primitive Arrays](#primitive-arrays)
+            - [ArrayList Arrays](#arraylist-arrays)
+        - [When Primitive Array Casts Are Required](#when-primitive-array-casts-are-required)
+        - [Basic Boolean Circuitry](#basic-boolean-circuitry)
+        - [How to Rotate Matrixes](#how-to-rotate-matrixes)
+        - [Boolean Truth Tables & Symbols](#boolean-truth-tables--symbols)
+        - [Bitwise Meanings](#bitwise-meanings)
+        - [How to Sort Different Types of Arrays](#how-to-sort-different-types-of-arrays)
+            - [Primitives](#primitives)
+            - [List Implementees (ArrayList, ?, ?..)](#list-implementees-arraylist--)
+        - [char And int Are Interchangable](#char-and-int-are-interchangable)
+        - [Classes Call From Where They Originate](#classes-call-from-where-they-originate)
+        - [List.remove() Element Shifting](#listremove-element-shifting)
+
+<!-- /TOC -->
 
 ## All concepts
 
@@ -43,9 +76,16 @@ Binary literals are defined with a `0b` or `0B` prefix.
 
 `0b10101 = 16 + 4 + 1 = 21`
 
-### Return Types
+### Common Mistakes
 
-Check **return type** of methods! Pretty simple, but easy to miss when speeding through a test.
+Most common mistakes come from not looking at a myriad of things closely.
+
+Here's a list of things you might want to pay attention to:
+
+* Return Types
+    - `double multiple(int a, int b)`
+* Increments/Decrements when moving along Lists
+    - `arr.remove(i--);`
 
 ### Binary Trees
 
@@ -349,8 +389,6 @@ It also expects a `new`, not just `String[]` before the *literal* part of a lite
 ### Boolean Truth Tables & Symbols
 
 ### Bitwise Meanings
-
-
 
 ### How to Sort Different Types of Arrays
 
