@@ -1,6 +1,8 @@
 # 2018 ICPC East Central North America Regional Contest
 
-**[Final Report and Results](http://acm-ecna.ysu.edu/PastResults/2018/home.html)**
+## 
+
+**[Final Report and Results](http://acm-ecna.ysu.edu/PastResults/2018/home.html)** | **[Practice Problem Set](./prac2018.pdf)** | **[Real Problem Set](./ecna2018.pdf)**
 
 ## Practice Contest
 
