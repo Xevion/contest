@@ -36,8 +36,8 @@ If you find something incorrect, feel free to contribute and modify.
         - [Bitwise Meanings](#bitwise-meanings)
         - [How to Sort Different Types of Arrays](#how-to-sort-different-types-of-arrays)
             - [Primitives](#primitives)
-            - [List Implementees (ArrayList, ?, ?..)](#list-implementees-arraylist--)
-        - [char And int Are Interchangable](#char-and-int-are-interchangable)
+            - [List Implementers (ArrayList, ?, ?..)](#list-implementers-arraylist--)
+        - [char And int Are Interchangeable](#char-and-int-are-interchangeable)
         - [Classes Call From Where They Originate](#classes-call-from-where-they-originate)
         - [List.remove() Element Shifting](#listremove-element-shifting)
 
@@ -398,9 +398,9 @@ For lists, one can use `Collections.sort` to sort any class that implements the 
 
 #### Primitives
 
-#### List Implementees (ArrayList, ?, ?..)
+#### List Implementers (ArrayList, ?, ?..)
 
-### char And int Are Interchangable
+### char And int Are Interchangeable
 
 ```
 void method(int a, char b)
