@@ -1,8 +1,8 @@
 # contest
 
-This repository manages my contest answers, UIL explanations and more.
+A repository dedicated to detailed explanations of Computer Science subjects, problems, practices, theory and concepts alongside solutions for Computer Science competition problem sets.
 
-Contains problems done in Java and/or Python.
+Focuses primarily on Java implementations.
 
 - **[Study](./study/README.MD)**
     - A collection of detailed explanations concerning problems I missed, or things I need to study in Computer Science. *Java* focus.
