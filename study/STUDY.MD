@@ -14,7 +14,7 @@ If you find something incorrect, feel free to contribute and modify.
     - [Table of Contents](#table-of-contents)
     - [All concepts](#all-concepts)
         - [Compound Assignment Operators](#compound-assignment-operators)
-        - [Octal Literals](#octal-literals)
+        - [Octal and Hexadecimal Literals](#octal-and-hexadecimal-literals)
         - [Common Mistakes](#common-mistakes)
         - [Binary Trees](#binary-trees)
         - [String.split Trailing Strings](#stringsplit-trailing-strings)
@@ -55,7 +55,7 @@ x += 2.6;
 
 Compound assignment operators effectively cast *before assigning values* to the specified variables.
 
-### Octal Literals
+### Octal and Hexadecimal Literals
 
 Octal Literals are defined by a zero prefix.
 
