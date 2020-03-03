@@ -40,6 +40,9 @@ If you find something incorrect, feel free to contribute and modify.
         - [char And int Are Interchangeable](#char-and-int-are-interchangeable)
         - [Classes Call From Where They Originate](#classes-call-from-where-they-originate)
         - [List.remove() Element Shifting](#listremove-element-shifting)
+        - [List.set() requires a element to work](#listset-requires-a-element-to-work)
+        - [How .compareTo Functions](#how-compareto-functions)
+        - [Access Privileges](#access-privileges)
 
 <!-- /TOC -->
 
@@ -474,3 +477,17 @@ public static void clearInteger(ArrayList<Integer> arr) {
                 arr.remove(i--);
     }
 ```
+
+### List.set() requires a element to work
+
+Lists will not dynamically resize to accommodate the `.set()` method, i.e. to use set at a specified index, the index must be a *valid* position in that array to access using `.get(int i)` or `.remove(int i)`.
+
+### How .compareTo Functions
+
+I've personally been doing `String.compareTo(String other)` incorrectly for a little too long. Here is how it works:
+
+For each character in the array, compare for equality until one does not match. If
+
+### Access Privileges
+
+`public`, `protected` and `private` are the three possible
