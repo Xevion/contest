@@ -453,6 +453,12 @@ B() {
 }
 ```
 
+Once you understand this, another half of the problem is unlocked, but here, you're still not out of the water yet. Despite the class `A` constructor calling `method()` from it's view in class `A`, it will in fact actually call the `method()` at class `B`.
+
+Methods called at any level, unless explicit called using `super.method()`, methods will always refer to methods found at the origin class (by this, I mean, it will always call class `B` methods).
+
+*Some more testing is order to see how variables, super() and more interact when called through a super constructor, as well as interaction*
+
 ### List.remove() Element Shifting
 
 [RemoveEvenIntegers on repl.it](https://repl.it/@Xevion/RemoveEvenIntegers)
