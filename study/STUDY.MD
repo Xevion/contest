@@ -39,11 +39,16 @@ If you find something incorrect, feel free to contribute and modify.
             - [List Implementers (ArrayList, ?, ?..)](#list-implementers-arraylist--)
         - [char And int Are Interchangeable](#char-and-int-are-interchangeable)
         - [Classes Call From Where They Originate](#classes-call-from-where-they-originate)
-        - [List.remove() Element Shifting](#listremove-element-shifting)
-        - [List.set() requires a element to work](#listset-requires-a-element-to-work)
-        - [How .compareTo Functions](#how-compareto-functions)
+        - [`List.remove(int i)` Element Shifting](#listremoveint-i-element-shifting)
+        - [`List.set(int i, Object obj)` requires a element to function](#listsetint-i-object-obj-requires-a-element-to-function)
+        - [How `String.compareTo` Functions](#how-stringcompareto-functions)
         - [Access Privileges](#access-privileges)
         - [Are Arrays Pass By Value or Pass By Reference?](#are-arrays-pass-by-value-or-pass-by-reference)
+        - [`Scanner.useDelimiter` And How Tokens Are Scanned](#scannerusedelimiter-and-how-tokens-are-scanned)
+            - [What Are Tokens?](#what-are-tokens)
+            - [What Are Delimiters?](#what-are-delimiters)
+            - [`hasNext` and `hasNextInt`](#hasnext-and-hasnextint)
+            - [`next` and `nextInt`](#next-and-nextint)
 
 <!-- /TOC -->
 
@@ -463,7 +468,7 @@ Methods called at any level, unless explicit called using `super.method()`, meth
 
 *Some more testing is order to see how variables, super() and more interact when called through a super constructor, as well as interaction*
 
-### List.remove() Element Shifting
+### `List.remove(int i)` Element Shifting
 
 [RemoveEvenIntegers on repl.it](https://repl.it/@Xevion/RemoveEvenIntegers)
 
@@ -479,11 +484,11 @@ public static void clearInteger(ArrayList<Integer> arr) {
     }
 ```
 
-### List.set() requires a element to work
+### `List.set(int i, Object obj)` requires a element to function
 
 Lists will not dynamically resize to accommodate the `.set()` method, i.e. to use set at a specified index, the index must be a *valid* position in that array to access using `.get(int i)` or `.remove(int i)`.
 
-### How .compareTo Functions
+### How `String.compareTo` Functions
 
 I've personally been doing `String.compareTo(String other)` incorrectly for a little too long. Here is how it works:
 
@@ -511,3 +516,26 @@ If you're familiar with how Objects work, you'll remember how literally everythi
 Arrays work in this fashion too, where arrays references are passed by value, but the array is kept the same, and changes made using that reference will show up elsewhere if not cloned using `array.clone()` or some other array cloning method.
 
 There is a lot more to how shallow and deep cloning works, but for tests, all you need to know is that arrays function in a way most similar to `Pass by Reference`, just like Objects.
+
+### `Scanner.useDelimiter` And How Tokens Are Scanned
+
+Scanners are incredibly useful objects with many useful functions. One of them ends up being `useDelimiter`, which can be an effective way of skipping time consuming `String.split` operations.
+
+#### What Are Tokens?
+
+Tokens are the pieces of text you want to extract from a given input. They are pieces of text, integers, doubles, binary or whitespace, and are completely determined by the delimiters that separate them.
+
+#### What Are Delimiters?
+
+#### `hasNext` and `hasNextInt`
+
+A important distinction in how exactly these functions work.
+
+hasNext is a basic function telling you whether or not a token is still left for processing in the Scanner's input. It's the most useful of them all, allowing users to never run into exceptions for processing empty data or going too far.
+
+hasNextInt is similar, and like the name, it simply asks if the next token is an int, and also, whether or not there is a token left.
+
+This is mostly self explanatory, but it's important to remember that when used with a while loop, **it will pause immediately when a non integer token is found**, it won't skip forward to the next token in the sequence.
+
+#### `next` and `nextInt`
+
