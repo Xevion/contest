@@ -43,6 +43,7 @@ If you find something incorrect, feel free to contribute and modify.
         - [List.set() requires a element to work](#listset-requires-a-element-to-work)
         - [How .compareTo Functions](#how-compareto-functions)
         - [Access Privileges](#access-privileges)
+        - [Are Arrays Pass By Value or Pass By Reference?](#are-arrays-pass-by-value-or-pass-by-reference)
 
 <!-- /TOC -->
 
@@ -500,3 +501,13 @@ For each character in the array, compare for equality until one does not match. 
     - ?
 - `(no modifier)`
     - ?
+
+### Are Arrays Pass By Value or Pass By Reference?
+
+In Java, arrays are **Pass By Value**, however, what is being passed is the `reference` to the array.
+
+If you're familiar with how Objects work, you'll remember how literally everything in Java is "Pass By Value".
+
+Arrays work in this fashion too, where arrays references are passed by value, but the array is kept the same, and changes made using that reference will show up elsewhere if not cloned using `array.clone()` or some other array cloning method.
+
+There is a lot more to how shallow and deep cloning works, but for tests, all you need to know is that arrays function in a way most similar to `Pass by Reference`, just like Objects.
