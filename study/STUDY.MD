@@ -49,6 +49,7 @@ If you find something incorrect, feel free to contribute and modify.
             - [What Are Delimiters?](#what-are-delimiters)
             - [`hasNext` and `hasNextInt`](#hasnext-and-hasnextint)
             - [`next` and `nextInt`](#next-and-nextint)
+            - [Examples with Explanations](#examples-with-explanations)
 
 <!-- /TOC -->
 
@@ -539,3 +540,47 @@ This is mostly self explanatory, but it's important to remember that when used w
 
 #### `next` and `nextInt`
 
+`Scanner.next` and `Scanner.nextInt` are the other side of `hasNext` and `hasNextInt`, instead of telling you whether it's safe, whether or not the token exists for the taking, they take the token.
+
+Again, to emphasize this clearly, as it escaped me completely when I looked into it: the next token MUST match the expected type that the method is requesting.
+
+While `next` expects no particular type, `nextInt` expects a Integer, and `nextDouble` expects a Double.
+
+This means that it won't skip ahead to the next set of tokens in the sequence until it finds a valid token, it will only check the exact next token in the sequence, and if it doesn't match, it will raise an exception.
+
+#### Examples with Explanations
+
+[Scanner.useDelimiter Usage](https://repl.it/@Xevion/ScanneruseDelimiter-Usage) on repl.it
+
+```java
+Scanner s = new Scanner("5.2.1.2\\2\\2.2");
+s.useDelimiter("\\.");
+int sum = 0;
+while(s.hasNextInt()) {
+    int i = s.nextInt();
+    out.println(i);
+    sum += i;
+}
+out.println(sum);
+```
+
+```java
+s = new Scanner("2 3 allure 5 yellow 39");
+while(s.hasNextInt())
+    out.println(s.nextInt());
+```
+
+```java
+ArrayList<String> arr = new ArrayList<String>();
+s = new Scanner("\t \t a  b  \t ");
+s.useDelimiter("\\s");
+while(s.hasNext())
+    arr.add(s.next());
+out.println(arr);
+```
+
+```java
+s = new Scanner("2 h j l 3 4 o p 0 9");
+for(int i = 0; i++ < 5;)
+    out.println(s.nextInt());
+```
