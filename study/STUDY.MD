@@ -490,4 +490,13 @@ For each character in the array, compare for equality until one does not match. 
 
 ### Access Privileges
 
-`public`, `protected` and `private` are the three possible
+`public`, `protected`, `private` and *a lack of a modifier* are the three possible *access modifiers* one can set for *classes, interfaces, variables and methods*.
+
+- `public`
+    - Anything and everything can access this.
+- `protected`
+    - ?
+- `private`
+    - ?
+- `(no modifier)`
+    - ?
