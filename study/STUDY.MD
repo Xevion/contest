@@ -119,6 +119,10 @@ Here's a list of things you might want to pay attention to:
     - `double multiple(int a, int b)`
 * Increments/Decrements when moving along Lists
     - `arr.remove(i--);`
+* Short to Int needs a Explicit Cast Due To Lossy Conversion
+    - `short a = 32;`
+    `short b = 48;`
+    `short ab = (short) a + b;`
 
 ### Binary Trees
 
