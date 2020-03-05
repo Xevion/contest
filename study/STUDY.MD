@@ -14,7 +14,9 @@ If you find something incorrect, feel free to contribute and modify.
     - [Table of Contents](#table-of-contents)
     - [All concepts](#all-concepts)
         - [Compound Assignment Operators](#compound-assignment-operators)
-        - [Octal and Hexadecimal Literals](#octal-and-hexadecimal-literals)
+        - [Octal, Hexadecimal and Decimal Literals](#octal-hexadecimal-and-decimal-literals)
+            - [Literals](#literals)
+            - [Printing](#printing)
         - [Common Mistakes](#common-mistakes)
         - [Binary Trees](#binary-trees)
         - [String.split Trailing Strings](#stringsplit-trailing-strings)
@@ -65,7 +67,9 @@ x += 2.6;
 
 Compound assignment operators effectively cast *before assigning values* to the specified variables.
 
-### Octal and Hexadecimal Literals
+### Octal, Hexadecimal and Decimal Literals
+
+#### Literals
 
 Octal Literals are defined by a zero prefix.
 
@@ -85,6 +89,25 @@ Hexadecimal literals are defined with the *case insensitive* character set `a-fA
 Binary literals are defined with a `0b` or `0B` prefix.
 
 `0b10101 = 16 + 4 + 1 = 21`
+
+#### Printing
+
+String.format has the ability to print Decimal, Octal and Hexadecimal integers. However, they don't take on the traditional form that the literals do.
+
+```java
+out.println(String.format("%o", 4358));
+> 10406
+out.println(String.format("%o", 0x5FAE));
+> 57656
+out.println(String.format("%x", 07703));
+> fc3
+out.println(String.format("%4.1f", 28.16));
+> 28.2
+```
+
+Despite their literal counterparts having prefixes of `0` and `0x` or `0X`, Octal and Hexadecimals will not be printed with a prefix. Adding one is as simple as typing the prefix in front, though, so there is nothing stopping you from doing it yourself should it be required.
+
+For bases other than 8, 10 and 16, Java provides `Integer.toString(int i, int radix)` and `Integer.toBinaryString(int i)` for binary representations.
 
 ### Common Mistakes
 
