@@ -14,9 +14,9 @@ If you find something incorrect, feel free to contribute and modify.
     - [Table of Contents](#table-of-contents)
     - [All concepts](#all-concepts)
         - [Compound Assignment Operators](#compound-assignment-operators)
-        - [Octal, Hexadecimal and Decimal Literals](#octal-hexadecimal-and-decimal-literals)
-            - [Literals](#literals)
-            - [Printing](#printing)
+        - [Octal, Hexadecimal and Decimal Formats](#octal-hexadecimal-and-decimal-formats)
+            - [Oct, Hex and Decimal Literals](#oct-hex-and-decimal-literals)
+            - [Printing Oct, Hex or Decimal Integers](#printing-oct-hex-or-decimal-integers)
         - [Common Mistakes](#common-mistakes)
         - [Binary Trees](#binary-trees)
         - [String.split Trailing Strings](#stringsplit-trailing-strings)
@@ -67,13 +67,13 @@ x += 2.6;
 
 Compound assignment operators effectively cast *before assigning values* to the specified variables.
 
-### Octal, Hexadecimal and Decimal Literals
+### Octal, Hexadecimal and Decimal Formats
 
-#### Literals
+#### Oct, Hex and Decimal Literals
 
 Octal Literals are defined by a zero prefix.
 
-```
+```java
 012 + 021 = ?
 012 = 8 + 2 = 10
 021 = 16 + 1 = 17
@@ -90,7 +90,7 @@ Binary literals are defined with a `0b` or `0B` prefix.
 
 `0b10101 = 16 + 4 + 1 = 21`
 
-#### Printing
+#### Printing Oct, Hex or Decimal Integers
 
 String.format has the ability to print Decimal, Octal and Hexadecimal integers. However, they don't take on the traditional form that the literals do.
 
