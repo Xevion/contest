@@ -591,12 +591,24 @@ while(s.hasNextInt()) {
 }
 out.println(sum);
 ```
+> yields 5 2 1 8
+
+Given the delimiter `\\.` (a escaped period), the tokens accessible by the Scanner are `5` `2` `1` `2\\2\\2` and `2`.
+
+But since we're working with a `haSNextInt` with no other way to skip through non-Integer tokens, it will fail to match upon the very strange mess of escaped backslashes and 2s that is `2\\2\\2`.
+
+The only tokens accepted were `5`, `2`, and `1`, which gives us a sum of `8`.
 
 ```java
 s = new Scanner("2 3 allure 5 yellow 39");
 while(s.hasNextInt())
     out.println(s.nextInt());
 ```
+> yields 2 3
+
+Similar to above, the possible tokens given the default delimiter of all whitespace (`\\s+` in regex) are `2` `3` `allure` `5` `yellow` and `39`.
+
+Since the first word, `allure` does not pass the Integer regular expression as defined by the Oracle JavaSE docs, `hasNextInt` returns false after Scanner yielded only two tokens, `2` and `3`.
 
 ```java
 ArrayList<String> arr = new ArrayList<String>();
@@ -606,12 +618,20 @@ while(s.hasNext())
     arr.add(s.next());
 out.println(arr);
 ```
+> yields [, , , a, , b, , , ]
+
+Since the delimiter isn't `\\s+`, every other whitespace element (including the tabs) can be a token (similar to how String.split works, except trailing 0-length tokens are NOT thrown out).
+
+Notice how spaces in between tokens are no longer respected since the default delimiter has been overwritten with a very messed up delimiter.
 
 ```java
 s = new Scanner("2 h j l 3 4 o p 0 9");
 for(int i = 0; i++ < 5;)
     out.println(s.nextInt());
 ```
+> yields `2, InputMismatchException`
+
+The Scanner will throw an exception while trying to parse `h` for an Integer. This is why `hasNextInt` is used, besides ensuring the Scanner input is not exhausted.
 
 
 ### Post-increment and Post-decrement Order is Important
