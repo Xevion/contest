@@ -52,6 +52,7 @@ If you find something incorrect, feel free to contribute and modify.
             - [`hasNext` and `hasNextInt`](#hasnext-and-hasnextint)
             - [`next` and `nextInt`](#next-and-nextint)
             - [Examples with Explanations](#examples-with-explanations)
+        - [Post-increment and Post-decrement Order is Important](#post-increment-and-post-decrement-order-is-important)
 
 <!-- /TOC -->
 
@@ -610,4 +611,16 @@ out.println(arr);
 s = new Scanner("2 h j l 3 4 o p 0 9");
 for(int i = 0; i++ < 5;)
     out.println(s.nextInt());
+```
+
+
+### Post-increment and Post-decrement Order is Important
+
+```java
+public static int m(int x, int y) {
+    if(x == 0)
+        return 1;
+    else
+        return m(--x, y) * x;
+}
 ```
