@@ -532,14 +532,28 @@ For each character in the array, compare for equality until one does not match. 
 
 `public`, `protected`, `private` and *a lack of a modifier* are the three possible *access modifiers* one can set for *classes, interfaces, variables and methods*.
 
-- `public`
-    - Anything and everything can access this.
-- *`(no modifier)`*
-    - A
-- `protected`
-    - ?
-- `private`
-    - ?
+A table provided by the Oracle JavaSE docs looked like this, and can be very helpful in illustrating who can access according to what modifier:
+
+| Modifier      | Class | Package | Subclass | World |
+|---------------|-------|---------|----------|-------|
+| public        | Y     | Y       | Y        | Y     |
+| protected     | Y     | Y       | Y        | N     |
+| *no modifier* | Y     | Y       | N        | N     |
+| private       | Y     | N       | N        | N     |
+
+Another table based on a more realistic example:
+
+![Classes and Packages of the Example Used to Illustrate Access Levels](https://i.imgur.com/30JkIXg.png)
+
+| Modifier      | Alpha | Beta | Alphasub | Gamma |
+|---------------|-------|------|----------|-------|
+| public        | Y     | Y    | Y        | Y     |
+| protected     | Y     | Y    | Y        | N     |
+| *no modifier* | Y     | Y    | N        | N     |
+| private       | Y     | N    | N        | N     |
+
+Source: [Controlling Access to Members of a Class](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+
 
 #### Privilege Level Never Changes
 
