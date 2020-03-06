@@ -45,6 +45,9 @@ If you find something incorrect, feel free to contribute and modify.
         - [`List.set(int i, Object obj)` requires a element to function](#listsetint-i-object-obj-requires-a-element-to-function)
         - [How `String.compareTo` Functions](#how-stringcompareto-functions)
         - [Access Privileges](#access-privileges)
+            - [Public, Protected, Private](#public-protected-private)
+            - [Privilege Level Never Changes](#privilege-level-never-changes)
+            - [Access is Revoked, Methods Are Not Destroyed](#access-is-revoked-methods-are-not-destroyed)
         - [Are Arrays Pass By Value or Pass By Reference?](#are-arrays-pass-by-value-or-pass-by-reference)
         - [`Scanner.useDelimiter` And How Tokens Are Scanned](#scannerusedelimiter-and-how-tokens-are-scanned)
             - [What Are Tokens?](#what-are-tokens)
@@ -525,6 +528,8 @@ For each character in the array, compare for equality until one does not match. 
 
 ### Access Privileges
 
+#### Public, Protected, Private
+
 `public`, `protected`, `private` and *a lack of a modifier* are the three possible *access modifiers* one can set for *classes, interfaces, variables and methods*.
 
 - `public`
@@ -535,6 +540,16 @@ For each character in the array, compare for equality until one does not match. 
     - ?
 - `(no modifier)`
     - ?
+
+#### Privilege Level Never Changes
+
+When a method is defined in a superclass, whatever access privilege it was given cannot change.
+
+Method access privilege level does not change, and subclasses MUST take on the exact same access modifier that the superclasses' original method did too.
+
+#### Access is Revoked, Methods Are Not Destroyed
+
+
 
 ### Are Arrays Pass By Value or Pass By Reference?
 
