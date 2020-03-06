@@ -534,11 +534,11 @@ For each character in the array, compare for equality until one does not match. 
 
 - `public`
     - Anything and everything can access this.
+- *`(no modifier)`*
+    - A
 - `protected`
     - ?
 - `private`
-    - ?
-- `(no modifier)`
     - ?
 
 #### Privilege Level Never Changes
@@ -549,7 +549,31 @@ Method access privilege level does not change, and subclasses MUST take on the e
 
 #### Access is Revoked, Methods Are Not Destroyed
 
+When you look into how `private` members function, some online resources will claim that the member is not inherited by subclasses, however, this isn't true.
 
+Subclasses must retain the functionality of the superclass at minimum, and they do this through standard inheritance. You'll recall how if methods aren't overwritten, they simply 'copy' (or just go 'through' the super) the method of the superclass.
+
+Subclasses do this too, and even if a private method isn't accessible, previously written methods that DO access the private method can do it for you.
+
+Here's an example:
+
+```java
+class A {
+    private List<Integer> read()
+    public int sum() // returns the sum of read()
+    public int product() // returns the product of read()
+}
+```
+
+```java
+class B {
+    // sum() and product() are still accessible, even if read() is private!
+}
+```
+
+Class B still retains the functionality provided by `sum()` and `product()`, even if these methods happen to be private.
+
+Through getters and setters, `private` fields inaccessible to `B` could be accessed.
 
 ### Are Arrays Pass By Value or Pass By Reference?
 
