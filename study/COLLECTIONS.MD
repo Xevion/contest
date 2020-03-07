@@ -33,6 +33,9 @@ This page will be using [javaTpoint](https://www.javatpoint.com/collections-in-j
         - [HashSet Class](#hashset-class)
         - [LinkedHashSet Class](#linkedhashset-class)
         - [TreeSet Class](#treeset-class)
+    - [Similarities and Differences](#similarities-and-differences)
+        - [ArrayList vs Vector](#arraylist-vs-vector)
+        - [HashSet vs TreeSet vs LinkedHashSet](#hashset-vs-treeset-vs-linkedhashset)
 
 <!-- /TOC -->
 
@@ -92,9 +95,21 @@ However, the real power comes from the next set of interfaces, and the special m
 
 ### ArrayList Class
 
+ArrayList uses a dynamically sized array.
+
+See [ArrayList vs Vector](#arraylist-vs-vector).
+
 ### LinkedList Class
 
 ### Vector Class
+
+Vector uses a dynamically sized array to store the data elements, with a functionality most similar to the [ArrayList Class](#arraylist-class)
+
+- Synchronized (Thead Safe, Multi-user Application)
+
+- Uses [Iterator](#iterator-interface) or Enumeration interface for element traversal
+
+See [ArrayList vs Vector](#arraylist-vs-vector).
 
 ### Stack Class
 
@@ -107,3 +122,9 @@ However, the real power comes from the next set of interfaces, and the special m
 ### LinkedHashSet Class
 
 ### TreeSet Class
+
+## Similarities and Differences
+
+### ArrayList vs Vector
+
+### HashSet vs TreeSet vs LinkedHashSet
