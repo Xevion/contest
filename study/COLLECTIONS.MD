@@ -85,6 +85,10 @@ It contains only one abstract method, `Iterator<T> iterator()` which returns the
 
 ### Collection Interface
 
+The Collection interface is the interface which is implemented by all the classes in the collection framework. It declares the methods that every collection will have. In other words, we can say that the Collection interface builds the foundation on which the collection framework depends.
+
+All methods the Collection interface implements can be seen [here](#methods-of-the-collection-interface).
+
 ### List Interface
 
 ### Queue Interface
