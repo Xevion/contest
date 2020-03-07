@@ -14,6 +14,25 @@ This page will be using [javaTpoint](https://www.javatpoint.com/collections-in-j
     - [Table of Contents](#table-of-contents)
     - [Hierarchy of Collection Framework](#hierarchy-of-collection-framework)
     - [Methods of the Collection Interface](#methods-of-the-collection-interface)
+    - [Interfaces](#interfaces)
+        - [Iterator Interface](#iterator-interface)
+        - [Iterable Interface](#iterable-interface)
+        - [Collection Interface](#collection-interface)
+        - [List Interface](#list-interface)
+        - [Queue Interface](#queue-interface)
+        - [Deque Interface](#deque-interface)
+        - [Set Interface](#set-interface)
+        - [SortedSet Interface](#sortedset-interface)
+    - [Classes](#classes)
+        - [ArrayList Class](#arraylist-class)
+        - [LinkedList Class](#linkedlist-class)
+        - [Vector Class](#vector-class)
+        - [Stack Class](#stack-class)
+        - [PriorityQueue Class](#priorityqueue-class)
+        - [ArrayDeque Class](#arraydeque-class)
+        - [HashSet Class](#hashset-class)
+        - [LinkedHashSet Class](#linkedhashset-class)
+        - [TreeSet Class](#treeset-class)
 
 <!-- /TOC -->
 
@@ -50,3 +69,41 @@ All datastructures referenced here can be imported using `import java.util.<stru
 Since all classes discussed onward inherit the `Collections` interface, you can be sure that a valid, working implementation exists for every single one of these methods.
 
 However, the real power comes from the next set of interfaces, and the special methods devised by each class to manipulate these complex data structures.
+
+## Interfaces
+
+### Iterator Interface
+
+### Iterable Interface
+
+### Collection Interface
+
+### List Interface
+
+### Queue Interface
+
+### Deque Interface
+
+### Set Interface
+
+### SortedSet Interface
+
+## Classes
+
+### ArrayList Class
+
+### LinkedList Class
+
+### Vector Class
+
+### Stack Class
+
+### PriorityQueue Class
+
+### ArrayDeque Class
+
+### HashSet Class
+
+### LinkedHashSet Class
+
+### TreeSet Class
