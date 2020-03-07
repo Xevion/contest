@@ -79,6 +79,10 @@ However, the real power comes from the next set of interfaces, and the special m
 
 ### Iterable Interface
 
+The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
+
+It contains only one abstract method, `Iterator<T> iterator()` which returns the `Iterator` object used to iterate over the elements of the datastructure (type `T`).
+
 ### Collection Interface
 
 ### List Interface
