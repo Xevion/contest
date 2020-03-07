@@ -46,3 +46,7 @@ All datastructures referenced here can be imported using `import java.util.<stru
 | **default Spliterator<E> spliterator()**                  | It generates a Spliterator over the specified elements in the collection.                                       |
 | **public boolean equals(Object element)**                 | It matches two collections.                                                                                     |
 | **public int hashCode()**                                 | It returns the hash code number of the collection.                                                              |
+
+Since all classes discussed onward inherit the `Collections` interface, you can be sure that a valid, working implementation exists for every single one of these methods.
+
+However, the real power comes from the next set of interfaces, and the special methods devised by each class to manipulate these complex data structures.
