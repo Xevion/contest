@@ -443,7 +443,7 @@ For lists, one can use `Collections.sort` to sort any class that implements the 
 
 ### !!! char And int Are Interchangeable
 
-```
+```java
 void method(int a, char b)
 method('c', 44)
 // method('g', 78900)
