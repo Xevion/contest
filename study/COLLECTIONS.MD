@@ -36,6 +36,8 @@ This page will be using [javaTpoint](https://www.javatpoint.com/collections-in-j
     - [Similarities and Differences](#similarities-and-differences)
         - [ArrayList vs Vector](#arraylist-vs-vector)
         - [HashSet vs TreeSet vs LinkedHashSet](#hashset-vs-treeset-vs-linkedhashset)
+    - [Tips and Tricks](#tips-and-tricks)
+        - [Datatype Conversion](#datatype-conversion)
 
 <!-- /TOC -->
 
@@ -91,6 +93,20 @@ All methods the Collection interface implements can be seen [here](#methods-of-t
 
 ### List Interface
 
+List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. Lists can have duplicate values.
+
+List interface is implemented by the classes [ArrayList](#arraylist-class), [LinkedList](#linkedlist-class), [Vector](#vector-class), and [Stack](#stack-class).
+
+Remember, that *as a Interface*, `List<T>`s cannot be instantiated, but can be used to type any of the implementing classes. For example:
+
+```java
+List<Integer> list; 
+list = new ArrayList<Integer>();
+list = new LinkedList<Integer>();
+list = new Stack<Integer>();
+list = new Vector<Integer>();
+```
+
 ### Queue Interface
 
 ### Deque Interface
@@ -136,3 +152,13 @@ See [ArrayList vs Vector](#arraylist-vs-vector).
 ### ArrayList vs Vector
 
 ### HashSet vs TreeSet vs LinkedHashSet
+
+## Tips and Tricks
+
+### Datatype Conversion
+
+To convert from Primitive Arrays to Object-based ArrayLists, Stacks or Queues, use `Arrays.asList(T[])`.
+
+It returns a *fixed-size* `List<T>` that directly modifies the entries of the original Array, so be careful.
+
+Most people feed this directly into a new `ArrayList` in order to avoid overwriting data, as well as to take advantage of ArrayList features (dynamically resizing).
