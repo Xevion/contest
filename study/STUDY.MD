@@ -589,6 +589,8 @@ Class B still retains the functionality provided by `sum()` and `product()`, eve
 
 Through getters and setters, `private` fields inaccessible to `B` could be accessed.
 
+Related:  [Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
+
 ### Are Arrays Pass By Value or Pass By Reference?
 
 In Java, arrays are **Pass By Value**, however, what is being passed is the `reference` to the array.
