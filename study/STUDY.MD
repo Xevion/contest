@@ -43,7 +43,7 @@ If you find something incorrect, feel free to contribute and modify.
         - [Classes Call From Where They Originate](#classes-call-from-where-they-originate)
         - [`List.remove(int i)` Element Shifting](#listremoveint-i-element-shifting)
         - [`List.set(int i, Object obj)` requires a element to function](#listsetint-i-object-obj-requires-a-element-to-function)
-        - [How `String.compareTo` Functions](#how-stringcompareto-functions)
+        - [!!! How `String.compareTo` Functions](#-how-stringcompareto-functions)
         - [Access Privileges](#access-privileges)
             - [Public, Protected, Private](#public-protected-private)
             - [Privilege Level Never Changes](#privilege-level-never-changes)
@@ -520,7 +520,7 @@ public static void clearInteger(ArrayList<Integer> arr) {
 
 Lists will not dynamically resize to accommodate the `.set()` method, i.e. to use set at a specified index, the index must be a *valid* position in that array to access using `.get(int i)` or `.remove(int i)`.
 
-### How `String.compareTo` Functions
+### !!! How `String.compareTo` Functions
 
 I've personally been doing `String.compareTo(String other)` incorrectly for a little too long. Here is how it works:
 
