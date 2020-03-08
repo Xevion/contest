@@ -21,8 +21,8 @@ If you find something incorrect, feel free to contribute and modify.
         - [Binary Trees](#binary-trees)
         - [String.split Trailing Strings](#stringsplit-trailing-strings)
         - [Java's Primary Four OOP Concepts](#javas-primary-four-oop-concepts)
-        - [Abstraction vs Encapsulation](#abstraction-vs-encapsulation)
-        - [Other important OOP concepts](#other-important-oop-concepts)
+            - [Abstraction vs Encapsulation](#abstraction-vs-encapsulation)
+            - [Other important OOP concepts](#other-important-oop-concepts)
         - [Bad AP practices](#bad-ap-practices)
             - [Why?](#why)
             - [Guidelines](#guidelines)
@@ -266,7 +266,7 @@ out.println("xx0x0x0x".split("x", 3));
             }
             ```
 
-### Abstraction vs Encapsulation
+#### Abstraction vs Encapsulation
 
 I've noticed that Abstraction and Encapsulation look *very* similar, and looking it up, it seems it's pretty common to mix it up.
 
@@ -274,7 +274,7 @@ I've noticed that Abstraction and Encapsulation look *very* similar, and looking
 
 I would mostly pay attention to what it looks like, more than truly understanding it. Tests will more likely show code with `Interface/Abstract Class` and ask you to determine what OOP Concept is being demonstrated, rather than a complex concept example.
 
-### Other important OOP concepts 
+#### Other important OOP concepts 
 
 * Coupling
     * Refers to how tightly or loosely two objects depend on or use eachother.
