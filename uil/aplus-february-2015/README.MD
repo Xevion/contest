@@ -9,39 +9,51 @@ Computer Science Competition Hands-On Programming Set
 * Automaton
     * [Source Code][1a]
     * [Open in Repl.it][1b]
+    * [See Explanation][1c]
 * AXCEL
     * [Source Code][2a]
     * [Open in Repl.it][2b]
+    * [See Explanation][2c]
 * Climb
     * [Source Code][3a]
     * [Open in Repl.it][3b]
+    * [See Explanation][3c]
 * Fate
     * [Source Code][4a]
     * [Open in Repl.it][4b]
+    * [See Explanation][4c]
 * Favorite
     * [Source Code][5a]
     * [Open in Repl.it][5b]
+    * [See Explanation][5c]
 * Maximus
     * [Source Code][6a]
     * [Open in Repl.it][6b]
+    * [See Explanation][6c]
 * MMM
     * [Source Code][7a]
     * [Open in Repl.it][7b]
+    * [See Explanation][7c]
 * Name
     * [Source Code][8a]
     * [Open in Repl.it][8b]
+    * [See Explanation][8c]
 * Play
     * [Source Code][9a]
     * [Open in Repl.it][9b]
+    * [See Explanation][9c]
 * Radians
     * [Source Code][10a]
     * [Open in Repl.it][10b]
+    * [See Explanation][10c]
 * Spending
     * [Source Code][11a]
     * [Open in Repl.it][11b]
+    * [See Explanation][11c]
 * TicTacToe
     * [Source Code][12a]
     * [Open in Repl.it][12b]
+    * [See Explanation][12c]
 
 [1a]: ./1/Automaton.java
 [1b]: https://Repl.it/@Xevion/A-Computer-Science-February-2015-Automaton
