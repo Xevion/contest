@@ -56,6 +56,7 @@ If you find something incorrect, feel free to contribute and modify.
             - [`next` and `nextInt`](#next-and-nextint)
             - [Examples with Explanations](#examples-with-explanations)
         - [!!! Post-increment and Post-decrement Order is Important](#-post-increment-and-post-decrement-order-is-important)
+        - [One Line Back and Forth Iteration](#one-line-back-and-forth-iteration)
 
 <!-- /TOC -->
 
@@ -698,4 +699,28 @@ public static int m(int x, int y) {
     else
         return m(--x, y) * x;
 }
+```
+
+### One Line Back and Forth Iteration
+
+A simple question, how do you think you would acquire the numeric sequence below?
+
+```java
+[0, 1, 2, 3, 4, 3, 2, 1, 0]
+```
+
+The standard method of doing it would be:
+
+```java
+for (int i = 0; i < 4; i++)
+    System.out.println(i);
+for (int i = 3; i >= 0; i--)
+    System.out.println(i);
+```
+
+but you can do it in one line with a bit of smart math:
+
+```java
+for (int i = -4; i <= 4; i++)
+    System.out.println(4 - Math.abs(i));
 ```
