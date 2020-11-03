@@ -2,9 +2,9 @@
 
 Questions I missed, things I need to pay attention to, study, or otherwise practice. All of these are curated from both online resources and my own experiences.
 
-While I may claim most of these to be right, and it should, make sure to research and confirm anything you wish to take from this file.
+While I claim that most of these are correct, I am not a perfect person and will make mistakes. Please check on things and evaluate them yourself if you need to be truly correct. It's good review, anyways.
 
-If you find something incorrect, feel free to contribute and modify.
+If you find something to be incorrect, feel free to send in a PR.
 
 ## Table of Contents
 
