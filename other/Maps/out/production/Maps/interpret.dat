@@ -1,0 +1,15 @@
+function alpha
+print (MISSISSIPPI...)
+end
+function beta
+print (TWO)
+call alpha
+print (THREE)
+call alpha
+end
+function start
+print (ONE)
+call alpha
+call beta
+print (GO!)
+end
