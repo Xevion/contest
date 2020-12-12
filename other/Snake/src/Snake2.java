@@ -26,9 +26,12 @@ class Coordinate
         return new Coordinate(this.x + other.x, this.y + other.y);
     }
 
-    public boolean equals(Coordinate other)
+    @Override
+    public boolean equals(Object obj)
     {
-        return this.x == other.x && this.y == other.y;
+        if (obj instanceof Coordinate)
+            return this.x == ((Coordinate) obj).x && this.y == ((Coordinate) obj).y;
+        return super.equals(obj);
     }
 
     @Override
@@ -50,7 +53,7 @@ public class Snake2
     {
         // Read in board input
         char[][] board = new char[15][15];
-        Scanner input = new Scanner(new File("./src/snake2.dat"));
+        Scanner input = new Scanner(new File("snake2.dat"));
         for (int y = 0; y < 15; y++) {
             String line = input.nextLine();
             for (int x = 0; x < 15; x++)
@@ -79,13 +82,11 @@ public class Snake2
         for (int y = 14; y >= 0; y--) {
             for (int x = 14; x >= 0; x--) {
                 if (board[y][x] == 'X') {
-                    snakeHead = new Coordinate(x, y);
                     board[y][x] = ' ';
-                    break;
+                    if (snakeHead == null)
+                        snakeHead = new Coordinate(x, y);
                 }
             }
-            if (snakeHead != null)
-                break;
         }
 
         // Initialize simulation variables
@@ -124,10 +125,17 @@ public class Snake2
             Coordinate newPosition = snake.get(0).plus(currentMove);
 
             // Test if new move is outside boundaries or if the snake contains the new position
-            if (newPosition.x < 0 || newPosition.y < 0 || newPosition.x >= 15 || newPosition.y >= 15 || snake.contains(newPosition)) {
+            if (newPosition.x < 0 || newPosition.y < 0 || newPosition.x >= 15 || newPosition.y >= 15) {
                 gameover = true;
                 break;
             }
+
+            // Test if the snake contains the new position (hitting itself), minus the tail.
+            for (int i = 0; i < snake.size() - 2; i++)
+                if (newPosition.equals(snake.get(i))) {
+                    gameover = true;
+                    break;
+                }
 
             // 'Move' the snake by adding new position, popping tail once
             snake.add(0, newPosition);
@@ -142,8 +150,10 @@ public class Snake2
         }
 
         // Print game's end status
-        if (gameover)
+        if (gameover) {
+            snake.remove(snake.size() - 1); // Remove tail to simulate out of bounds/into snake movement
             out.println("GAME OVER");
+        }
         else
             out.println(String.format("%d pellets", pellets));
 
