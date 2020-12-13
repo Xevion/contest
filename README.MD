@@ -1,4 +1,12 @@
-# contest
+<div align="center">
+    <a href="https://github.com/Xevion/contest">
+        <img src="./.media/banner.png" alt="Contest Repository Banner">
+    </a>
+    <br>
+    <sub>
+        Created by Xevion
+    </sub>
+</div>
 
 A repository dedicated to detailed explanations of Computer Science subjects, problems, practices, theory and concepts alongside solutions for Computer Science competition problem sets.
 
