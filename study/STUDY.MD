@@ -280,7 +280,7 @@ I would mostly pay attention to what it looks like, more than truly understandin
 * Coupling
     * Refers to how tightly or loosely two objects depend on or use eachother.
         * Tight Coupling 
-            * For example, a tightly coupled relationship, a Human and his/her Heart, they are highly dependent on eachother to continue life.
+            * For example, a tightly coupled relationship, a Human and their Heart, they are highly dependent on eachother to continue life.
             ```java
             class Human {
                 private Heart heart;
@@ -325,9 +325,17 @@ In fact, it's likely that aspiring Software Engineers will want to get used to t
     * Make sure your lines are straight across the paper, and do not slant haphazardly.
     * Write somewhat large. Not excessively large, but larger than one would do for Essays in English and other writing assignments. Gauge how much room you need to answer the Free Response and write in a size accordingly.
     * APCentral has actually released a example of good penmanship, seen below.
-    ![APCentral Penmanship Example](https://i.imgur.com/mx1PP73.gif)
+    <br>
+    <div align="center">
+        <img src="https://i.imgur.com/mx1PP73.gif" alt="APCentral Penmanship Example">
+        <br>
+        <sub>
+        Notice the superb spacing and straight, aligned lines of text.
+        </sub>
+    </div>
+
 * Bracketing Style
-    * When writing brackets, follow this format (I may not be following this format in the rest of this file, sorry).
+    * Brackets go on new lines (I may not be following this format in the rest of this file, sorry).
     ```java
     class File
     {

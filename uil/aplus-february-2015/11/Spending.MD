@@ -10,6 +10,6 @@ Without thinking, it would seem that it's similar to the rest, and can be implem
 
 Here's an example of how it might go wrong, a implementation that essentially buys the most expensive items first... With three items with three distinct worths, $40, $30, and $20, with a total budget of $50, one can quickly notice that purchasing the two items worth $30 and $20 will yield the budget matched perfectly. However, a implementation that buys the most expensive item first will fail!
 
-Similarly, a implementation that does the opposite will fail too: five items, [$50, $25, $15, $5, $1], budget of $65. The implementationn will attempt a combination of $1, $5, $15, and $25 for a total of $46. The proper choice would in fact be $50 and $15. The choices picked have no distinct pattern, and a `Combinations` algorithm will need to be implemented, which can be very difficult for those new to it (me included!).
+Similarly, a implementation that does the opposite will fail too: five items, [$50, $25, $15, $5, $1], budget of $65. The implementation will attempt a combination of $1, $5, $15, and $25 for a total of $46. The proper choice would in fact be $50 and $15. The choices picked have no distinct pattern, and a `Combinations` algorithm will need to be implemented, which can be very difficult for those new to it (me included!).
 
 My implementation is incomplete as of this moment.
